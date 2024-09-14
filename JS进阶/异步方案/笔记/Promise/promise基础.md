@@ -10,6 +10,11 @@ promise对象的两个特点
 + 对象不受外界的影响。promise对象有三种状态：**pending**（进行中），**fulfilled**（已成功），**rejected**（已失败）。
 + 一旦状态改变，就不会在改变，任何时候都能获取这个结果。状态变为fulfilled或rejected，状态就凝固了，这时就称为resolved（已定型）
 
+优点：
+- 可以避免回调地狱（callback hell）的问题，使异步代码更加清晰和可读。
+- 提供了更好的错误处理机制，可以通过链式调用的方式捕获和处理错误。
+- 支持并发和串行的异步操作，提供更灵活的控制流程。
+- 
 缺点：
 1. 无法取消 Promise，一旦新建它就会立刻执行，无法中途取消。
 2. Promise 内部的错误不会影响到 Promise 外部的代码。故需要设置回调函数才能知道错误。
@@ -90,6 +95,21 @@ console.log('one');
 Promise.try(() => database.users.get({id: userId}))
   .then(...)
   .catch(...)
+```
++ Promise.defer()：将 resolve方法和 reject方法暴露出来，更好的处理，解耦等
+```js
+Promise.defer = function() {
+    let resolve, reject;
+    let promise = new Promise(function(res, rej) {
+        resolve = res;
+        reject = rej;
+    });
+    return {
+        promise, 
+        resolve,
+        reject
+    };
+}
 ```
 
 ## Promise/A+ 规范
