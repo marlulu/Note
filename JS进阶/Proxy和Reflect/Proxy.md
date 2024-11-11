@@ -62,4 +62,16 @@ Object.defineProperty(obj, "num", {
 //  对象 obj 拥有属性 num，值为 1
 ```
 
-
+**局限性**
++ 内建对象具有“内部插槽”，对这些对象的访问无法被代理。
+  ```js
+  user = new Proxy(user, {
+    get(target, prop, receiver) {
+        let value = Reflect.get(...arguments);
+        return typeof value === 'function' ? value.bind(target) : value
+    }
+  })
+  ```
++ 私有类字段也是如此，因为它们也是在内部使用插槽实现的。因此，代理方法的调用必须具有目标对象作为 this 才能访问它们。
++ 对象的严格相等性检查 === 无法被拦截。
++ 性能：基准测试（benchmark）取决于引擎，但通常使用最简单的代理访问属性所需的时间也要长几倍。实际上，这仅对某些“瓶颈”对象来说才重要。

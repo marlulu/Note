@@ -239,7 +239,7 @@ Promise.all = function(promiseArr) {
           }
         },
         function(reason) {
-          reject(reason);
+          return reject(reason);
         }
       );
     }
