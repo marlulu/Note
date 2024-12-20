@@ -1,0 +1,186 @@
+/*
+Flex
+*/
+
+.flex {
+    margin: auto;
+    width: 800px;
+    height:800px;
+}
+
+.flex > .item {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    background-color: red;
+}
+/*
+dispkay: flex 确定布局方式
+
+flex-direction 设置主轴
+    row x轴
+    row-reverse x轴反向
+    column y轴
+    column-reverse y轴反向
+
+*/
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+/*
+justify-content 主轴上的排列方式
+    flex-end 在容器尾部依次排列
+    flex-start 在容器首部依次排列
+    center 在容器中部依次排列
+    space-between 项目之间间隔相等，第一个紧贴容器首部，最后一个紧贴容器尾部。
+    space-around 项目之间间隔相等，项目两侧间隔是项目之间间隔的一半
+    space-evenly 项目之间的间隔相等，包括项目与容器边缘的间隔
+*/
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+/*
+align-items 侧轴上单行的排列方式
+    flex-start 从顶部开始排列
+    flex-end 从底部开始排列
+    center 垂直居中
+    stretch 项目未设置高度，占满容器的高度
+    baseline 以文本的基线对齐
+*/
+
+/* 居中 */
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
+}
+
+/*
+align-self 单个项目侧轴上的排列方式
+    flex-start 从顶部开始对齐
+    flex-end 从底部开始对齐
+    center 居中
+    stretch 侧轴上拉伸，直到填满，没有设置高度和宽度时
+    baseline 以文本的基线对齐
+*/
+
+.item:nth-of-type(1) {
+    background-color: aqua;
+    align-self: baseline;
+    flex-grow: 1
+}
+
+/*
+flex-grow 空间有剩余，按比例分配剩余空间
+    flex-grow: 0 不分配
+    flex-grow: 1 等比例分配
+    flex-grow: 2 分配的是其他的2倍（其他的是flex-grow: 1） 
+*/
+
+.item:nth-of-type(2) {
+    background-color: aqua;
+    flex-grow: 2;
+}
+
+/*
+flex-shrink 空间不足，按比例进行收缩
+    flex-shrink: 0 不分配
+    flex-shrink: 1 默认值，默认收缩
+    flex-shrink: 2 收缩的是其他的2倍（其他的是flex-shrink: 1） 
+*/
+
+.item:nth-of-type(3) {
+    background-color: aqua;
+    flex-shrink: 2
+}
+
+/*
+flex-basis 设置项目的收缩基础值，比width优先级更高
+    max-width和min-width会对其进行限制
+    flex-basis: %数，相对与父元素的width计算
+    flex-basis: auto，设置的width，没有设置就是内容宽度
+    flex-basis: 具体长度
+*/
+
+.item:nth-of-type(4) {
+    flex-basis: 200px;
+    background-color: blue;
+    order: 1;
+    flex-shrink: 2
+}
+
+/*
+order 设置元素的排列顺序
+    数值越小，元素排列越靠前
+    当大于 0 排序的时候，从未设置或为 0 的后面排序
+    当小于 0 排序的时候，从未设置或为 0 的前面排序
+    order: 默认 0
+    order: 负数，0，正数
+*/
+
+.item:nth-of-type(5) {
+    flex-basis: 200px;
+    background-color: rgb(43, 255, 0);
+    order: -1;
+}
+
+/*
+flex-wrap 设置元素的排列顺序
+    flex-wrap: nowrap 默认值
+    flex-wrap: wrap 换行
+    flex-wrap: wrap-reverse 反向换行，换在满行的上面
+*/
+
+.item:nth-of-type(6) {
+    flex-basis: 200px;
+    background-color: rgb(255, 0, 157);
+    flex-grow: 1;
+}
+
+.flex {
+    flex-wrap: wrap;
+}
+
+/*
+align-content 多行内容的对齐
+    flex-end 在容器尾部依次排列
+    flex-start 在容器首部依次排列
+    center 在容器中部依次排列
+    space-between 行之间间隔相等，第一个紧贴容器首部，最后一个紧贴容器尾部。
+    space-around 行之间间隔相等，项目两侧间隔是项目之间间隔的一半
+    space-evenly 行之间的间隔相等，包括项目与容器边缘的间隔
+    stretch（默认值）：如果行未设置高度或设为auto，将占满整个容器的高度。
+*/
+.flex {
+    align-content: flex-end;
+}
+
+/*
+flex-flow
+    flex-direction + flex-wrap
+*/
+
+/*
+flex
+    flex-grow + flex-shrink + flex-basis
+    flex: 0 1 auto 默认值
+
+    只包含两个 flex-shrink 默认为 1
+
+    flex 0 300px => flex: 0 1 300px
+
+    只包含一个
+    flex: 1 => flex: 1 1 0px
+    flex: 0 => flex: 0 1 0px
+    flex: none => flex: 0 0 auto
+    flex: auto => flex: 1 1 auto
+*/
