@@ -9,6 +9,8 @@ And so are you.
 
 // 字符串插值
 // 在一个连续定义中插入一个或多个值
+// 非原始值会制定调用 toString()
+// 原始值：Number String Boolean Undefined Null Symbol BigInt
 const value = 5
 const exponent = 'second'
 const interStrings = `${ value } to the ${ exponent} power is ${ value * value}`;

@@ -93,15 +93,13 @@ Array.prototype.some = function(callbackFn, thisArg) {
 
 // reduce
 Array.prototype.reduce  = function(callbackFn, initialValue) {
-    console.log(callbackFn)
     if (this === null) {
         throw new TypeError('this is null or not defined')
     }
     if (typeof callbackFn !== 'function') {
-        return new TypeError(callback + ' is not a function')
+        return new TypeError(callbackFn + ' is not a function')
     } 
     const array = Object(this)
-    console.log(array)
     // 确保转换后的值为正整数，且在无意义的情况默认值为 0 
     // 底层：非 number -> number -> Uint 32
     const len = array.length >>> 0 
