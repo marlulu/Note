@@ -1,0 +1,148 @@
+
+.container {
+    margin: auto;
+    width: 800px;
+    height:800px;
+}
+
+.container > .item {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    background-color: red;
+}
+
+.container {
+    display: grid;
+    /** 列分，每列在x轴的宽度 **/
+    /** grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%; **/
+    grid-template-columns: repeat(8, 12.5%);
+}
+
+.container {
+    display: grid;
+    /** fr 表示网格容器中可用空间的一小部分。每个 fr 单位分配一个可用空间份额 **/
+    /** 50% 50% **/
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.container {
+    display: grid;
+    /** 左固定右自适应 **/
+    grid-template-columns: 100px auto;
+    /** 行分，每行在y轴的宽度 **/
+    grid-template-rows: 100px 150px 1fr;
+}
+
+/** auto 和 fr 的区别 **/
+/** fr 始终会分配可用空间 **/
+/** auto 将根据情况自动将列的大小设置为容器的大小或列中元素内容的大小 **/
+
+/** column-gap 设置网格左右间距 **/
+/** row-gap 设置网格上下间距 **/
+
+/** gap: <row-gap> / <column-gap>; **/
+/** row 和 column 相等时 只用定义一个 **/
+
+/** grid-column-start 指定网格线在 grid 列中的起始位置 **/
+/** grid-column-end 指定网格线在 grid 列中的结束位置 **/
+/** 若没有 start，则会从 end 的前一项开始 **/
+
+/** grid-column-start: span <number>; 给定指定数量的元素跨越的网格轨道，并非定义的起始位置，而是定义的跨越多少格 **/
+
+/** grid-row-start grid-row-end 用法和 column 相似 **/
+
+/** 简化
+grid-column: <start> / <end>;
+grid-row: <start> / <end>;
+ */
+
+/**
+grid-template-areas 指定的网格区域的名称来定义网格模板。重复网格区域的名称会导致内容跨越这些单元格。
+**/
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 50px);
+  grid-template-areas: "header header header"
+    "nav content content"
+    "nav content content"
+    "footer footer footer";
+}
+
+#header {
+  grid-area: header;
+}
+
+#nav {
+  grid-area: nav;
+}
+
+#content {
+  grid-area: content;
+}
+
+#footer {
+  grid-area: footer;
+}
+
+/**
+grid-area: <row-start> / <column-start> / <row-end> / <column-end>
+**/
+
+/**
+min-content 内容的固有最小宽度。对于文本内容，这意味着内容将利用所有软包装机会，变得与最长的单词一样小。
+max-content 内容的固有最大宽度
+**/
+
+/**
+minmax(min, max) 缩放最大距离和最小距离
+**/
+
+/**
+auto-fill: 用尽可能多的列填充行，不会收缩
+auto-fit: 通过扩展当前可用列来将当前可用列放入空间，以便它们占用任何可用空间，会收缩
+**/
+
+/**
+grid-template: <grid-template-rows> / <grid-template-columns>;
+
+grid-template: <grid-template-areas> <grid-template-rows> / <grid-template-columns>;
+**/
+
+/**
+隐式网格
+如果网格项多于网格中的单元格，或者将网格项放置在显式网格之外，则网格容器会通过向网格添加网格线来自动生成网格轨道。显式网格与这些额外的隐式轨道和线条一起构成了所谓的隐式网格。
+
+grid-auto-flow: row 或 column 依次填充，并根据需要添加新行/列
+grid-auto-flow: dense 寻找空的地方填充
+grid-auto-columns: 指定隐式 column;
+grid-auto-rows: 指定隐式 row;
+如果将 grid 项放置在未由 grid-template-rows 明确调整大小的行中，则会创建隐式 grid 轨道来保存它。
+**/
+
+/**
+行
+justify-items: start end center stretch
+**/
+
+/**
+列
+align-items: start end center stretch
+**/
+
+/**
+单个网格
+justify-self: start end center stretch
+align-self: start end center stretch
+
+place-self: <align-self> <justify-self>;
+**/
+
+/**
+设置网格容器内网格的对齐方式，行
+justify-content: start end center stretch space-around space-between space-evenly
+
+设置网格容器内网格的对齐方式，列
+align-content: start end center stretch space-around space-between space-evenly
+**/
