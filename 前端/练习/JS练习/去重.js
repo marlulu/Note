@@ -18,7 +18,7 @@ const array2 = [{id: 1, text: "1"}, {id: 1, text: "1"}, {id: 2, text: "1"}, {id:
  * null = undefined => 相等
  * 任何类型 - null/undefined => false
  * 
- * 例子：[] == "" => true， {} == "[object Object]"
+ * 例子：[] == "" => true， {} == "[object Object]" => false
  * 
  * 其他：JS中除了 false，0，""，null，undefined，NaN之外的视为true
  */

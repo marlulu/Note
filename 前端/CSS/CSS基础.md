@@ -316,7 +316,15 @@ ___
     - RGB[A] 颜色
     - HSL[A] 颜色
 
-14. css sprite
+14. position 属性
+    - static: 表示元素根据正常的文档流进行定位。
+    - relative: 表示元素相对于其原始位置进行定位。
+    - absolute: 定位使元素脱离文档流，元素的位置将相对于最近的已定位祖先元素进行定位。
+    - fixed: 定位使元素脱离文档流，元素相对于浏览器窗口固定定位，不随页面滚动而移动。
+    - sticky: 结合了 relative 和 fixed 定位的特性，元素在滚动到特定位置时会变为固定定位，直到滚动回其原始位置。
+    - 区别：absolute，fixed 会脱离文档流，其他的不会
+
+15. css sprite
   - background-color
            
      
