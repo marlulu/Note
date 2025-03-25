@@ -50,3 +50,29 @@ ES6 中都会将空位当做undefined
 - String.prototype.split() （split() 方法使用指定的分隔符字符串将一个String对象分割成字符串数组）
 - Array.prototype.join() （join() 方法将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串）
 - Promise.all() （失败返回的是promise对象）
+
+9. js中一个对象被 new 出来，发生的隐式‘三步
+   - 创建一个空对象{}，并设置其原型为 构造函数.prototype。
+   - 将 this 绑定到新对象上，并执行构造函数中的代码。
+   - 除非构造函数显式返回一个对象，否则返回新创建的对象。
+
+10. JS 可迭代对象
+    - 数组（Array）
+    - 字符串（String）
+    - Map
+    - Set
+    - TypedArray
+    - NodeList
+    - Arguments对象
+
+11. Date.now()返回一个时间戳，是number类型
+
+12。 JS引擎在执行赋值语句时，会先从左往右解析各个变量名，转换成变量值，然后从右往左执行赋值。
+
+13. 页面加载顺序：readystatechange -> DOMContentLoaded -> onload -> pageshow
+
+14. link 和 @import 的区别
+- link是XHTML标签，除了加载css外，还可以定义rss等其他事务；@import属于css范畴，只能加载css
+- link引用css时，在页面载入时间时加载；@import需要页面网页完全载入以后加载。
+- link是XHTML标签，没有兼容问题；@import是在css2.1提出的，低版本的浏览器不支持
+- link支持使用js控制dom改变样式，而@import不支持

@@ -134,7 +134,7 @@ ___
    - 01000：内联样式
    - 00100：ID选择器
    - 00010：类选择器，伪类选择器，属性选择器
-   - 00001：元素选择器，伪元素选择器
+   - 00001：标签选择器，伪元素选择器
    - 00000：通配选择器，后代选择器，兄弟选择器
 
 5. 继承性
@@ -368,3 +368,31 @@ ___
      
 20. text-shadow 属性中的四个值 (length、length、length、color) 分别是什么意义
     - 阴影离开文字大的横方向距离，阴影离开文字的纵方向距离，阴影的模糊半径，阴影的颜色
+
+21. offest 和 client
+  - offest：偏移量，只读，不能修改，没有单位（width + padding + border）
+  - offestParent：有定位的父级元素
+  - offestTop：元素相对定位父级元素的上方偏移
+  - offestLeft：元素相对定位父级元素的左边偏移
+  - offestHeight：返回自身带有 padding，边框，内容的高度
+  - offestWidth：返回自身带有 padding，边框，内容的宽度
+
+  - client：元素可视区的信息（width + padding，不包括垂直滚动条）
+  - clientTop：元素上边框的大小
+  - clientLeft：元素左边框的大小
+  - clientHeight：返回自身带有 padding，内容的高度，无边框
+  - clientWidth：返回自身带有 padding，内容的宽度，无边框
+
+  - scroll：动态得到元素的大小、滚动距离
+  - scrollTop：被卷上去的上侧距离
+  - scrollLeft：被卷去的左侧距离
+  - scrollHeight：返回自身的实际宽度，不包含边框
+  - scrollWidth：返回自身的实际高度，不包含边框
+
+22. 当两个CSS文件中存在相同选择器的规则时,后加载的CSS文件中的规则会与先加载的规则进行合并。这里的合并指的是相同属性会覆盖,不同属性会叠加。
+
+23. css 百分比参照问题
+  - 参照父元素宽度元素：padding，margin，width，text-indent
+  - 参照父元素高度元素：height
+  - 参照父元素属性：font-size，line-height
+  - 特殊：相对定位的时候，top这类参照的是父元素的内容区域的高度与宽度，而绝对定位的时候参照的是最近的定位元素包含padding的高度与宽度 

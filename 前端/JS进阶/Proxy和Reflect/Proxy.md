@@ -22,6 +22,8 @@ new Proxy() 表示生成一个 Proxy 实例，target 参数表示所要拦截的目标对象(包括函数)
 + apply(target, object, args)：拦截 Proxy 实例作为函数调用的操作，比如 `proxy(...args)`、`proxy.call(object, ...args)`、`proxy.apply(...)`。
 + construct(target, args)：拦截 Proxy 实例作为构造函数调用的操作，比如 `new proxy(...args)`，this 指向的是 handler，不是实例对象。
 
+ps：当类中一个属性只有get()方法而无set()方法时，该属性是无法进行赋值的，连构造方法中的初始化都不行
+
 **Proxy.revocable()**
 返回一个可取消的 Proxy 实例。
 ```js
