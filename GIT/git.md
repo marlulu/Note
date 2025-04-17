@@ -249,6 +249,12 @@ $ git add .
 ```
 
 ```gitignore
+$ git reset 取消添加的
+```
+
+
+
+```gitignore
 #添加每个变化前，都会要求确认
 #对于同一个文件的多处变化，可以实现分次提交
 $ git add -p
@@ -417,6 +423,7 @@ $ git remote add [shortname] [url]
 
 **添加远程仓库地址**
 ```gitignore
+将一个本地 Git 仓库与远程仓库（例如 GitHub 上的仓库）关联起来的  
 $ git remote add origin https://xxx/xxx.git
 ```
 
@@ -448,6 +455,11 @@ $ git push [remote] --force
 $ git push [remote] --all
 ```
 
+**用于将本地分支的更改推送到远程仓库，并同时设置该本地分支与远程分支的跟踪关系**
+```gitignore
+$ git push --set-upstream origin [remote]
+```
+
 ## 撤销：
 **恢复暂存区的指定文件到工作区**
 ```gitignore
@@ -462,6 +474,10 @@ $ git checkout [commit] [file]
 **恢复暂存区的所有文件到工作区**
 ```gitignore
 $ git checkout .
+```
+**用于基于远程分支 origin/[remote] 创建并切换到一个新的本地分支 [remote]**
+```gitignore
+git checkout -b [remote] origin/[remote]
 ```
 
 **重置暂存区的指定文件，与上一次 commit 保持一致，但工作区不变**
