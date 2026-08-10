@@ -1,16 +1,16 @@
-// åå‡½æ•°å°±æ˜¯å°†ä¸€ä¸ª n å‚çš„å‡½æ•°è½¬æ¢æˆå›ºå®š x å‚çš„å‡½æ•°
-// å‰©ä½™å‚æ•°ï¼ˆn - xï¼‰å°†åœ¨ä¸‹æ¬¡è°ƒç”¨å…¨éƒ¨ä¼ å…¥
-
-function add(a, b, c) {
-    return a + b + c
-}
-let partialAdd = partial(add, 1)
-
-partialAdd(2, 3)
-
-// å®ç°
-function partial(func, ...args) {
-    return function(...arg) {
-        return func(...args, ...arg)
-    }
+// Æ«º¯Êı¾ÍÊÇ½«Ò»¸ö n ²ÎµÄº¯Êı×ª»»³É¹Ì¶¨ x ²ÎµÄº¯Êı
+// Ê£Óà²ÎÊı£¨n - x£©½«ÔÚÏÂ´Îµ÷ÓÃÈ«²¿´«Èë
+
+function add(a, b, c) {
+    return a + b + c
+}
+let partialAdd = partial(add, 1)
+
+partialAdd(2, 3)
+
+// ÊµÏÖ
+function partial(func, ...args) {
+    return function(...arg) {
+        return func(...args, ...arg)
+    }
 }

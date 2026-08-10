@@ -1,186 +1,186 @@
-/*
-Flex
-*/
-
-.flex {
-    margin: auto;
-    width: 800px;
-    height:800px;
-}
-
-.flex > .item {
-    height: 100px;
-    width: 100px;
-    border: 1px solid black;
-    background-color: red;
-}
-/*
-display: flex ç¡®å®šå¸ƒå±€æ–¹å¼
-
-flex-direction è®¾ç½®ä¸»è½´
-    row xè½´
-    row-reverse xè½´åå‘
-    column yè½´
-    column-reverse yè½´åå‘
-
-*/
-
-.flex {
-    display: flex;
-    flex-direction: row;
-}
-
-/*
-justify-content ä¸»è½´ä¸Šçš„æŽ’åˆ—æ–¹å¼
-    flex-end åœ¨å®¹å™¨å°¾éƒ¨ä¾æ¬¡æŽ’åˆ—
-    flex-start åœ¨å®¹å™¨é¦–éƒ¨ä¾æ¬¡æŽ’åˆ—
-    center åœ¨å®¹å™¨ä¸­éƒ¨ä¾æ¬¡æŽ’åˆ—
-    space-between é¡¹ç›®ä¹‹é—´é—´éš”ç›¸ç­‰ï¼Œç¬¬ä¸€ä¸ªç´§è´´å®¹å™¨é¦–éƒ¨ï¼Œæœ€åŽä¸€ä¸ªç´§è´´å®¹å™¨å°¾éƒ¨ã€‚
-    space-around é¡¹ç›®ä¹‹é—´é—´éš”ç›¸ç­‰ï¼Œé¡¹ç›®ä¸¤ä¾§é—´éš”æ˜¯é¡¹ç›®ä¹‹é—´é—´éš”çš„ä¸€åŠ
-    space-evenly é¡¹ç›®ä¹‹é—´çš„é—´éš”ç›¸ç­‰ï¼ŒåŒ…æ‹¬é¡¹ç›®ä¸Žå®¹å™¨è¾¹ç¼˜çš„é—´éš”
-*/
-
-.flex {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-
-/*
-align-items ä¾§è½´ä¸Šå•è¡Œçš„æŽ’åˆ—æ–¹å¼
-    flex-start ä»Žé¡¶éƒ¨å¼€å§‹æŽ’åˆ—
-    flex-end ä»Žåº•éƒ¨å¼€å§‹æŽ’åˆ—
-    center åž‚ç›´å±…ä¸­
-    stretch é¡¹ç›®æœªè®¾ç½®é«˜åº¦ï¼Œå æ»¡å®¹å™¨çš„é«˜åº¦
-    baseline ä»¥æ–‡æœ¬çš„åŸºçº¿å¯¹é½
-*/
-
-/* å±…ä¸­ */
-.flex {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center
-}
-
-/*
-align-self å•ä¸ªé¡¹ç›®ä¾§è½´ä¸Šçš„æŽ’åˆ—æ–¹å¼
-    flex-start ä»Žé¡¶éƒ¨å¼€å§‹å¯¹é½
-    flex-end ä»Žåº•éƒ¨å¼€å§‹å¯¹é½
-    center å±…ä¸­
-    stretch ä¾§è½´ä¸Šæ‹‰ä¼¸ï¼Œç›´åˆ°å¡«æ»¡ï¼Œæ²¡æœ‰è®¾ç½®é«˜åº¦å’Œå®½åº¦æ—¶
-    baseline ä»¥æ–‡æœ¬çš„åŸºçº¿å¯¹é½
-*/
-
-.item:nth-of-type(1) {
-    background-color: aqua;
-    align-self: baseline;
-    flex-grow: 1
-}
-
-/*
-flex-grow ç©ºé—´æœ‰å‰©ä½™ï¼ŒæŒ‰æ¯”ä¾‹åˆ†é…å‰©ä½™ç©ºé—´
-    flex-grow: 0 ä¸åˆ†é…
-    flex-grow: 1 ç­‰æ¯”ä¾‹åˆ†é…
-    flex-grow: 2 åˆ†é…çš„æ˜¯å…¶ä»–çš„2å€ï¼ˆå…¶ä»–çš„æ˜¯flex-grow: 1ï¼‰ 
-*/
-
-.item:nth-of-type(2) {
-    background-color: aqua;
-    flex-grow: 2;
-}
-
-/*
-flex-shrink ç©ºé—´ä¸è¶³ï¼ŒæŒ‰æ¯”ä¾‹è¿›è¡Œæ”¶ç¼©
-    flex-shrink: 0 ä¸åˆ†é…
-    flex-shrink: 1 é»˜è®¤å€¼ï¼Œé»˜è®¤æ”¶ç¼©
-    flex-shrink: 2 æ”¶ç¼©çš„æ˜¯å…¶ä»–çš„2å€ï¼ˆå…¶ä»–çš„æ˜¯flex-shrink: 1ï¼‰ 
-*/
-
-.item:nth-of-type(3) {
-    background-color: aqua;
-    flex-shrink: 2
-}
-
-/*
-flex-basis è®¾ç½®é¡¹ç›®çš„æ”¶ç¼©åŸºç¡€å€¼ï¼Œæ¯”widthä¼˜å…ˆçº§æ›´é«˜
-    max-widthå’Œmin-widthä¼šå¯¹å…¶è¿›è¡Œé™åˆ¶
-    flex-basis: %æ•°ï¼Œç›¸å¯¹ä¸Žçˆ¶å…ƒç´ çš„widthè®¡ç®—
-    flex-basis: autoï¼Œè®¾ç½®çš„widthï¼Œæ²¡æœ‰è®¾ç½®å°±æ˜¯å†…å®¹å®½åº¦
-    flex-basis: å…·ä½“é•¿åº¦
-*/
-
-.item:nth-of-type(4) {
-    flex-basis: 200px;
-    background-color: blue;
-    order: 1;
-    flex-shrink: 2
-}
-
-/*
-order è®¾ç½®å…ƒç´ çš„æŽ’åˆ—é¡ºåº
-    æ•°å€¼è¶Šå°ï¼Œå…ƒç´ æŽ’åˆ—è¶Šé å‰
-    å½“å¤§äºŽ 0 æŽ’åºçš„æ—¶å€™ï¼Œä»Žæœªè®¾ç½®æˆ–ä¸º 0 çš„åŽé¢æŽ’åº
-    å½“å°äºŽ 0 æŽ’åºçš„æ—¶å€™ï¼Œä»Žæœªè®¾ç½®æˆ–ä¸º 0 çš„å‰é¢æŽ’åº
-    order: é»˜è®¤ 0
-    order: è´Ÿæ•°ï¼Œ0ï¼Œæ­£æ•°
-*/
-
-.item:nth-of-type(5) {
-    flex-basis: 200px;
-    background-color: rgb(43, 255, 0);
-    order: -1;
-}
-
-/*
-flex-wrap è®¾ç½®å…ƒç´ çš„æŽ’åˆ—é¡ºåº
-    flex-wrap: nowrap é»˜è®¤å€¼
-    flex-wrap: wrap æ¢è¡Œ
-    flex-wrap: wrap-reverse åå‘æ¢è¡Œï¼Œæ¢åœ¨æ»¡è¡Œçš„ä¸Šé¢
-*/
-
-.item:nth-of-type(6) {
-    flex-basis: 200px;
-    background-color: rgb(255, 0, 157);
-    flex-grow: 1;
-}
-
-.flex {
-    flex-wrap: wrap;
-}
-
-/*
-align-content å¤šè¡Œå†…å®¹çš„å¯¹é½
-    flex-end åœ¨å®¹å™¨å°¾éƒ¨ä¾æ¬¡æŽ’åˆ—
-    flex-start åœ¨å®¹å™¨é¦–éƒ¨ä¾æ¬¡æŽ’åˆ—
-    center åœ¨å®¹å™¨ä¸­éƒ¨ä¾æ¬¡æŽ’åˆ—
-    space-between è¡Œä¹‹é—´é—´éš”ç›¸ç­‰ï¼Œç¬¬ä¸€ä¸ªç´§è´´å®¹å™¨é¦–éƒ¨ï¼Œæœ€åŽä¸€ä¸ªç´§è´´å®¹å™¨å°¾éƒ¨ã€‚
-    space-around è¡Œä¹‹é—´é—´éš”ç›¸ç­‰ï¼Œé¡¹ç›®ä¸¤ä¾§é—´éš”æ˜¯é¡¹ç›®ä¹‹é—´é—´éš”çš„ä¸€åŠ
-    space-evenly è¡Œä¹‹é—´çš„é—´éš”ç›¸ç­‰ï¼ŒåŒ…æ‹¬é¡¹ç›®ä¸Žå®¹å™¨è¾¹ç¼˜çš„é—´éš”
-    stretchï¼ˆé»˜è®¤å€¼ï¼‰ï¼šå¦‚æžœè¡Œæœªè®¾ç½®é«˜åº¦æˆ–è®¾ä¸ºautoï¼Œå°†å æ»¡æ•´ä¸ªå®¹å™¨çš„é«˜åº¦ã€‚
-*/
-.flex {
-    align-content: flex-end;
-}
-
-/*
-flex-flow
-    flex-direction + flex-wrap
-*/
-
-/*
-flex
-    flex-grow + flex-shrink + flex-basis
-    flex: 0 1 auto é»˜è®¤å€¼
-
-    åªåŒ…å«ä¸¤ä¸ª flex-shrink é»˜è®¤ä¸º 1
-
-    flex 0 300px => flex: 0 1 300px
-
-    åªåŒ…å«ä¸€ä¸ª
-    flex: 1 => flex: 1 1 0px
-    flex: 0 => flex: 0 1 0px
-    flex: none => flex: 0 0 auto
-    flex: auto => flex: 1 1 auto
-*/
+/*
+Flex
+*/
+
+.flex {
+    margin: auto;
+    width: 800px;
+    height:800px;
+}
+
+.flex > .item {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    background-color: red;
+}
+/*
+display: flex È·¶¨²¼¾Ö·½Ê½
+
+flex-direction ÉèÖÃÖ÷Öá
+    row xÖá
+    row-reverse xÖá·´Ïò
+    column yÖá
+    column-reverse yÖá·´Ïò
+
+*/
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+/*
+justify-content Ö÷ÖáÉÏµÄÅÅÁÐ·½Ê½
+    flex-end ÔÚÈÝÆ÷Î²²¿ÒÀ´ÎÅÅÁÐ
+    flex-start ÔÚÈÝÆ÷Ê×²¿ÒÀ´ÎÅÅÁÐ
+    center ÔÚÈÝÆ÷ÖÐ²¿ÒÀ´ÎÅÅÁÐ
+    space-between ÏîÄ¿Ö®¼ä¼ä¸ôÏàµÈ£¬µÚÒ»¸ö½ôÌùÈÝÆ÷Ê×²¿£¬×îºóÒ»¸ö½ôÌùÈÝÆ÷Î²²¿¡£
+    space-around ÏîÄ¿Ö®¼ä¼ä¸ôÏàµÈ£¬ÏîÄ¿Á½²à¼ä¸ôÊÇÏîÄ¿Ö®¼ä¼ä¸ôµÄÒ»°ë
+    space-evenly ÏîÄ¿Ö®¼äµÄ¼ä¸ôÏàµÈ£¬°üÀ¨ÏîÄ¿ÓëÈÝÆ÷±ßÔµµÄ¼ä¸ô
+*/
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+/*
+align-items ²àÖáÉÏµ¥ÐÐµÄÅÅÁÐ·½Ê½
+    flex-start ´Ó¶¥²¿¿ªÊ¼ÅÅÁÐ
+    flex-end ´Óµ×²¿¿ªÊ¼ÅÅÁÐ
+    center ´¹Ö±¾ÓÖÐ
+    stretch ÏîÄ¿Î´ÉèÖÃ¸ß¶È£¬Õ¼ÂúÈÝÆ÷µÄ¸ß¶È
+    baseline ÒÔÎÄ±¾µÄ»ùÏß¶ÔÆë
+*/
+
+/* ¾ÓÖÐ */
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
+}
+
+/*
+align-self µ¥¸öÏîÄ¿²àÖáÉÏµÄÅÅÁÐ·½Ê½
+    flex-start ´Ó¶¥²¿¿ªÊ¼¶ÔÆë
+    flex-end ´Óµ×²¿¿ªÊ¼¶ÔÆë
+    center ¾ÓÖÐ
+    stretch ²àÖáÉÏÀ­Éì£¬Ö±µ½ÌîÂú£¬Ã»ÓÐÉèÖÃ¸ß¶ÈºÍ¿í¶ÈÊ±
+    baseline ÒÔÎÄ±¾µÄ»ùÏß¶ÔÆë
+*/
+
+.item:nth-of-type(1) {
+    background-color: aqua;
+    align-self: baseline;
+    flex-grow: 1
+}
+
+/*
+flex-grow ¿Õ¼äÓÐÊ£Óà£¬°´±ÈÀý·ÖÅäÊ£Óà¿Õ¼ä
+    flex-grow: 0 ²»·ÖÅä
+    flex-grow: 1 µÈ±ÈÀý·ÖÅä
+    flex-grow: 2 ·ÖÅäµÄÊÇÆäËûµÄ2±¶£¨ÆäËûµÄÊÇflex-grow: 1£© 
+*/
+
+.item:nth-of-type(2) {
+    background-color: aqua;
+    flex-grow: 2;
+}
+
+/*
+flex-shrink ¿Õ¼ä²»×ã£¬°´±ÈÀý½øÐÐÊÕËõ
+    flex-shrink: 0 ²»·ÖÅä
+    flex-shrink: 1 Ä¬ÈÏÖµ£¬Ä¬ÈÏÊÕËõ
+    flex-shrink: 2 ÊÕËõµÄÊÇÆäËûµÄ2±¶£¨ÆäËûµÄÊÇflex-shrink: 1£© 
+*/
+
+.item:nth-of-type(3) {
+    background-color: aqua;
+    flex-shrink: 2
+}
+
+/*
+flex-basis ÉèÖÃÏîÄ¿µÄÊÕËõ»ù´¡Öµ£¬±ÈwidthÓÅÏÈ¼¶¸ü¸ß
+    max-widthºÍmin-width»á¶ÔÆä½øÐÐÏÞÖÆ
+    flex-basis: %Êý£¬Ïà¶ÔÓë¸¸ÔªËØµÄwidth¼ÆËã
+    flex-basis: auto£¬ÉèÖÃµÄwidth£¬Ã»ÓÐÉèÖÃ¾ÍÊÇÄÚÈÝ¿í¶È
+    flex-basis: ¾ßÌå³¤¶È
+*/
+
+.item:nth-of-type(4) {
+    flex-basis: 200px;
+    background-color: blue;
+    order: 1;
+    flex-shrink: 2
+}
+
+/*
+order ÉèÖÃÔªËØµÄÅÅÁÐË³Ðò
+    ÊýÖµÔ½Ð¡£¬ÔªËØÅÅÁÐÔ½¿¿Ç°
+    µ±´óÓÚ 0 ÅÅÐòµÄÊ±ºò£¬´ÓÎ´ÉèÖÃ»òÎª 0 µÄºóÃæÅÅÐò
+    µ±Ð¡ÓÚ 0 ÅÅÐòµÄÊ±ºò£¬´ÓÎ´ÉèÖÃ»òÎª 0 µÄÇ°ÃæÅÅÐò
+    order: Ä¬ÈÏ 0
+    order: ¸ºÊý£¬0£¬ÕýÊý
+*/
+
+.item:nth-of-type(5) {
+    flex-basis: 200px;
+    background-color: rgb(43, 255, 0);
+    order: -1;
+}
+
+/*
+flex-wrap ÉèÖÃÔªËØµÄÅÅÁÐË³Ðò
+    flex-wrap: nowrap Ä¬ÈÏÖµ
+    flex-wrap: wrap »»ÐÐ
+    flex-wrap: wrap-reverse ·´Ïò»»ÐÐ£¬»»ÔÚÂúÐÐµÄÉÏÃæ
+*/
+
+.item:nth-of-type(6) {
+    flex-basis: 200px;
+    background-color: rgb(255, 0, 157);
+    flex-grow: 1;
+}
+
+.flex {
+    flex-wrap: wrap;
+}
+
+/*
+align-content ¶àÐÐÄÚÈÝµÄ¶ÔÆë
+    flex-end ÔÚÈÝÆ÷Î²²¿ÒÀ´ÎÅÅÁÐ
+    flex-start ÔÚÈÝÆ÷Ê×²¿ÒÀ´ÎÅÅÁÐ
+    center ÔÚÈÝÆ÷ÖÐ²¿ÒÀ´ÎÅÅÁÐ
+    space-between ÐÐÖ®¼ä¼ä¸ôÏàµÈ£¬µÚÒ»¸ö½ôÌùÈÝÆ÷Ê×²¿£¬×îºóÒ»¸ö½ôÌùÈÝÆ÷Î²²¿¡£
+    space-around ÐÐÖ®¼ä¼ä¸ôÏàµÈ£¬ÏîÄ¿Á½²à¼ä¸ôÊÇÏîÄ¿Ö®¼ä¼ä¸ôµÄÒ»°ë
+    space-evenly ÐÐÖ®¼äµÄ¼ä¸ôÏàµÈ£¬°üÀ¨ÏîÄ¿ÓëÈÝÆ÷±ßÔµµÄ¼ä¸ô
+    stretch£¨Ä¬ÈÏÖµ£©£ºÈç¹ûÐÐÎ´ÉèÖÃ¸ß¶È»òÉèÎªauto£¬½«Õ¼ÂúÕû¸öÈÝÆ÷µÄ¸ß¶È¡£
+*/
+.flex {
+    align-content: flex-end;
+}
+
+/*
+flex-flow
+    flex-direction + flex-wrap
+*/
+
+/*
+flex
+    flex-grow + flex-shrink + flex-basis
+    flex: 0 1 auto Ä¬ÈÏÖµ
+
+    Ö»°üº¬Á½¸ö flex-shrink Ä¬ÈÏÎª 1
+
+    flex 0 300px => flex: 0 1 300px
+
+    Ö»°üº¬Ò»¸ö
+    flex: 1 => flex: 1 1 0px
+    flex: 0 => flex: 0 1 0px
+    flex: none => flex: 0 0 auto
+    flex: auto => flex: 1 1 auto
+*/

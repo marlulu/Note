@@ -1,22 +1,22 @@
-// æ€è·¯
-// åˆ›å»ºä¸€ä¸ªXMLHttpRequestå¯¹è±¡
-// é…ç½®è¯·æ±‚ï¼Œå‘é€è¯·æ±‚ï¼Œå¤„ç†å“åº”
-
-const getJSON = (url) => {
-    const xhr = new XMLHttpRequest()
-    return new Promise((reslove, reject) => {
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4) {
-                if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
-                    reslove(xhr.responseText)
-                } else {
-                    reject(new Error(xhr.responseText))
-                }
-            }
-        }
-        xhr.open('get', url, false)
-        xhr.setRequestHeader('Accept', 'application/json')
-        xhr.send()
-    })
-
+// Ë¼Â·
+// ´´½¨Ò»¸öXMLHttpRequest¶ÔÏó
+// ÅäÖÃÇëÇó£¬·¢ËÍÇëÇó£¬´¦ÀíÏìÓ¦
+
+const getJSON = (url) => {
+    const xhr = new XMLHttpRequest()
+    return new Promise((reslove, reject) => {
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+                    reslove(xhr.responseText)
+                } else {
+                    reject(new Error(xhr.responseText))
+                }
+            }
+        }
+        xhr.open('get', url, false)
+        xhr.setRequestHeader('Accept', 'application/json')
+        xhr.send()
+    })
+
 }

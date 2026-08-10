@@ -1,14 +1,14 @@
-// è§¦å‘é«˜é¢‘äº‹ä»¶ N ç§’åŽåªä¼šæ‰§è¡Œä¸€æ¬¡ï¼Œå¦‚æžœ N ç§’å†…äº‹ä»¶å†æ¬¡è§¦å‘ï¼Œåˆ™ä¼šé‡æ–°è®¡æ—¶
-
-// ç®€æ˜“ç‰ˆ
-function debounce(func, ms) {
-    let timeout
-    return function() {
-        if (timeout) {
-            clearTimeout(timeout)
-        }
-        timeout = setTimeout(() => {
-            func.apply(this, arguments)
-        }, ms)
-    }
+// ´¥·¢¸ßÆµÊÂ¼þ N ÃëºóÖ»»áÖ´ÐÐÒ»´Î£¬Èç¹û N ÃëÄÚÊÂ¼þÔÙ´Î´¥·¢£¬Ôò»áÖØÐÂ¼ÆÊ±
+
+// ¼òÒ×°æ
+function debounce(func, ms) {
+    let timeout
+    return function() {
+        if (timeout) {
+            clearTimeout(timeout)
+        }
+        timeout = setTimeout(() => {
+            func.apply(this, arguments)
+        }, ms)
+    }
 }

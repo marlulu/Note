@@ -1,80 +1,80 @@
-{
-    /**
-     * åŸºæœ¬ç±»å‹è½¬å­—ç¬¦ä¸²
-     * undefined -> undefined ç±»å‹ä¹Ÿæ˜¯ undefined
-     * boolean -> fasle/true
-     * number -> 1 -> '1'
-     * symbol -> undefined
-     * null -> 'null'
-     * string -> '1' -> '1'
-     * NaN Infinity -> 'null'
-     */
-    
-    /**
-     * function -> undefined
-     */
-
-    /**
-     * å¯¹è±¡ç±»å‹
-     * æ•°ç»„ï¼šå±æ€§å€¼å‡ºç°undefinedï¼Œå‡½æ•°ï¼Œsymbolè½¬ä¸ºnull
-     * RegExpå¯¹è±¡ï¼Œè¿”å›æ˜¯ {} çš„ String ç±»å‹
-     * Dateå¯¹è±¡ï¼Œè¿”å›çš„æ˜¯ Date çš„ toJSON çš„å­—ç¬¦ä¸²å€¼
-     * æ™®é€šå¯¹è±¡ï¼šæœ‰ toJSON()ï¼Œè¿”å› toJSON() çš„å€¼ï¼Œå±æ€§å€¼å‡ºç° undefinedï¼Œå‡½æ•°ï¼Œsymbolå€¼å¿½ç•¥ï¼Œä»¥symbolä¸ºé”®ä¼šè¢«å¿½ç•¥
-     */
-
-    /**
-     * å¯¹åŒ…å«å¾ªç¯å¼•ç”¨çš„å¯¹è±¡ï¼ˆå¯¹è±¡ä¹‹é—´ç›¸äº’å¼•ç”¨ï¼Œå½¢æˆæ— é™å¾ªç¯ï¼‰æ‰§è¡Œæ­¤æ–¹æ³•ï¼Œä¼šæŠ›å‡ºé”™è¯¯
-     */
-    function jsonStringify(data) {
-        const dataType = typeof data;
-        if (dataType !== 'obejct') {
-            let result = data;
-            if (Number.isNaN(data) || data === Infinity) {
-                //NaN å’Œ Infinity åºåˆ—åŒ–è¿”å› "null"
-                result = "null";
-             } else if (type === 'function' || type === 'undefined' || type === 'symbol') {
-               // ç”±äº function åºåˆ—åŒ–è¿”å› undefinedï¼Œå› æ­¤å’Œ undefinedã€symbol ä¸€èµ·å¤„ç†
-                return undefined;
-             } else if (type === 'string') {
-                result = '"' + data + '"';
-             }
-
-             return String(result)
-         
-        } else if (dataType === 'object') {
-            if (data === null) {
-                return "null"
-            } else if (data.toJSON && typeof data.toJSON === 'function') {
-                return jsonStringify(data.toJSON())
-            } else if (data instanceof Array) {
-                let result = [];
-
-                data.forEach((item, index) => {
-                    if (typeof item === 'undefined' || typeof item === 'function' || typeof item === 'symbol') {
-                        result[index] = "null";
-                    } else {
-                        result[index] = jsonStringify(item);
-                    }
-                })
-
-    
-                return ("[" + result + "]").replace(/'/g, '"');
-            } else {
-                let result = []
-                Object.keys(data).forEach((key) => {
-                    if (typeof key !== 'symbol') {
-                        if (data[key] !== undefined && typeof data[key] !== 'function' && typeof data[key] !== 'symbol') {
-                            //é”®å€¼å¦‚æœæ˜¯ undefinedã€functionã€symbol ä¸ºå±æ€§å€¼ï¼Œå¿½ç•¥
-                            result.push('"' + key + '"' + ":" + jsonStringify(data[key]));
-                          }
-            
-                    }
-                })
-
-                return ("{" + result + "}").replace(/'/g, '"')
-            }
-
-
-        }
-    }
+{
+    /**
+     * »ù±¾ÀàĞÍ×ª×Ö·û´®
+     * undefined -> undefined ÀàĞÍÒ²ÊÇ undefined
+     * boolean -> fasle/true
+     * number -> 1 -> '1'
+     * symbol -> undefined
+     * null -> 'null'
+     * string -> '1' -> '1'
+     * NaN Infinity -> 'null'
+     */
+    
+    /**
+     * function -> undefined
+     */
+
+    /**
+     * ¶ÔÏóÀàĞÍ
+     * Êı×é£ºÊôĞÔÖµ³öÏÖundefined£¬º¯Êı£¬symbol×ªÎªnull
+     * RegExp¶ÔÏó£¬·µ»ØÊÇ {} µÄ String ÀàĞÍ
+     * Date¶ÔÏó£¬·µ»ØµÄÊÇ Date µÄ toJSON µÄ×Ö·û´®Öµ
+     * ÆÕÍ¨¶ÔÏó£ºÓĞ toJSON()£¬·µ»Ø toJSON() µÄÖµ£¬ÊôĞÔÖµ³öÏÖ undefined£¬º¯Êı£¬symbolÖµºöÂÔ£¬ÒÔsymbolÎª¼ü»á±»ºöÂÔ
+     */
+
+    /**
+     * ¶Ô°üº¬Ñ­»·ÒıÓÃµÄ¶ÔÏó£¨¶ÔÏóÖ®¼äÏà»¥ÒıÓÃ£¬ĞÎ³ÉÎŞÏŞÑ­»·£©Ö´ĞĞ´Ë·½·¨£¬»áÅ×³ö´íÎó
+     */
+    function jsonStringify(data) {
+        const dataType = typeof data;
+        if (dataType !== 'obejct') {
+            let result = data;
+            if (Number.isNaN(data) || data === Infinity) {
+                //NaN ºÍ Infinity ĞòÁĞ»¯·µ»Ø "null"
+                result = "null";
+             } else if (type === 'function' || type === 'undefined' || type === 'symbol') {
+               // ÓÉÓÚ function ĞòÁĞ»¯·µ»Ø undefined£¬Òò´ËºÍ undefined¡¢symbol Ò»Æğ´¦Àí
+                return undefined;
+             } else if (type === 'string') {
+                result = '"' + data + '"';
+             }
+
+             return String(result)
+         
+        } else if (dataType === 'object') {
+            if (data === null) {
+                return "null"
+            } else if (data.toJSON && typeof data.toJSON === 'function') {
+                return jsonStringify(data.toJSON())
+            } else if (data instanceof Array) {
+                let result = [];
+
+                data.forEach((item, index) => {
+                    if (typeof item === 'undefined' || typeof item === 'function' || typeof item === 'symbol') {
+                        result[index] = "null";
+                    } else {
+                        result[index] = jsonStringify(item);
+                    }
+                })
+
+    
+                return ("[" + result + "]").replace(/'/g, '"');
+            } else {
+                let result = []
+                Object.keys(data).forEach((key) => {
+                    if (typeof key !== 'symbol') {
+                        if (data[key] !== undefined && typeof data[key] !== 'function' && typeof data[key] !== 'symbol') {
+                            //¼üÖµÈç¹ûÊÇ undefined¡¢function¡¢symbol ÎªÊôĞÔÖµ£¬ºöÂÔ
+                            result.push('"' + key + '"' + ":" + jsonStringify(data[key]));
+                          }
+            
+                    }
+                })
+
+                return ("{" + result + "}").replace(/'/g, '"')
+            }
+
+
+        }
+    }
 }

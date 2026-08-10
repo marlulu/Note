@@ -1,27 +1,27 @@
-{
-// new ä¿®æ”¹å‡½æ•°çš„thisç»‘å®š
-// å°†æ–°å¯¹è±¡çš„éšå¼åŸå‹(.__proto__)æŒ‡å‘æ„é€ å‡½æ•°çš„æ˜¾å¼åŸå‹
-// å°†æ„é€ å‡½æ•°çš„thisæŒ‡å‘ä¿®æ”¹ä¸ºæŒ‡å‘å¯¹è±¡
-function objectFactory(Constructor, ...args) {
-    const obj = {}
-    Object.setPrototypeOf(obj, Constructor.prototype)
-    let res = Constructor.apply(obj, args)
-    return res === 'object' ? res || obj : obj
-
-
-}
-
-
-function PersonFactory(name, age) {
-    this.name = name
-    this.age = age
-}
-
-const p1 = new PersonFactory('Steven',  '20')
-console.log(p1) // PersonFactory { name: 'Steven', age: '20' }
-
-const p2 = objectFactory(PersonFactory,  'Steven',  '20')
-console.log(p2) // PersonFactory { name: 'Steven', age: '20' }
-
-
+{
+// new ĞŞ¸Äº¯ÊıµÄthis°ó¶¨
+// ½«ĞÂ¶ÔÏóµÄÒşÊ½Ô­ĞÍ(.__proto__)Ö¸Ïò¹¹Ôìº¯ÊıµÄÏÔÊ½Ô­ĞÍ
+// ½«¹¹Ôìº¯ÊıµÄthisÖ¸ÏòĞŞ¸ÄÎªÖ¸Ïò¶ÔÏó
+function objectFactory(Constructor, ...args) {
+    const obj = {}
+    Object.setPrototypeOf(obj, Constructor.prototype)
+    let res = Constructor.apply(obj, args)
+    return res === 'object' ? res || obj : obj
+
+
+}
+
+
+function PersonFactory(name, age) {
+    this.name = name
+    this.age = age
+}
+
+const p1 = new PersonFactory('Steven',  '20')
+console.log(p1) // PersonFactory { name: 'Steven', age: '20' }
+
+const p2 = objectFactory(PersonFactory,  'Steven',  '20')
+console.log(p2) // PersonFactory { name: 'Steven', age: '20' }
+
+
 }

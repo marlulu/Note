@@ -1,60 +1,60 @@
-// æ€è·¯ï¼šå°†çŠ¶æ€é€šè¿‡é”®å€¼å¯¹æ–¹å¼å­˜å‚¨åœ¨ç¼“å­˜ä¸­
-// è®¢é˜…çš„æ—¶å€™æ·»åŠ è¿›å»
-// å‘å¸ƒçš„æ—¶å€™éå†ä½¿ç”¨
-
-class EventEmitter {
-    constructor() {
-        this.cache = {}
-    } 
-
-    // è®¢é˜…
-    on(name, fn) {
-        if(this.cache[name]) {
-            // å¯ä»¥å¤šä¸ªäº‹ä»¶è¢«è®¢é˜…
-            this.cache[name].push(fn)
-        } else {
-            this.cache[name] = [fn]
-        }
-    }
-
-    // å–æ¶ˆè®¢é˜…
-    off(name, fn) {
-        const tasks = this.cache[name]
-        if (tasks) {
-            // ç§»é™¤è®¢é˜…çš„æ–¹æ³•æˆ–è€…ç§»é™¤æ–¹æ³•å›è°ƒè¿›è¡Œçš„è®¢é˜…
-            const index = tasks.findIndex(f => f === fn || fn === f.callback)
-            if (index >= 0) {
-                tasks.splice(index, 1)
-            }
-        }
-    }
-
-    // å‘å¸ƒ
-    emit(name, once=false, ...args) {
-        if (this.cache[name]) {
-            // åˆ›å»ºå‰¯æœ¬
-            const tasks = this.cache[name].slice()
-            for (const task of tasks) {
-                // éœ€è¦ä¼ çš„å‚
-                task(...args)
-            }
-
-            if (once) {
-                delete this.cache[name]
-            }
-        }
-    }
-    
-}
-
-const eventBus = new EventEmitter()
-const task1 = () => { console.log('task1'); }
-const task2 = () => { console.log('task2'); }
-
-eventBus.on('task', task1)
-eventBus.on('task', task2)
-eventBus.off('task', task1)
-setTimeout(() => {
-  eventBus.emit('task') // task2
-}, 1000)
+// Ë¼Â·£º½«×´Ì¬Í¨¹ı¼üÖµ¶Ô·½Ê½´æ´¢ÔÚ»º´æÖĞ
+// ¶©ÔÄµÄÊ±ºòÌí¼Ó½øÈ¥
+// ·¢²¼µÄÊ±ºò±éÀúÊ¹ÓÃ
+
+class EventEmitter {
+    constructor() {
+        this.cache = {}
+    } 
+
+    // ¶©ÔÄ
+    on(name, fn) {
+        if(this.cache[name]) {
+            // ¿ÉÒÔ¶à¸öÊÂ¼ş±»¶©ÔÄ
+            this.cache[name].push(fn)
+        } else {
+            this.cache[name] = [fn]
+        }
+    }
+
+    // È¡Ïû¶©ÔÄ
+    off(name, fn) {
+        const tasks = this.cache[name]
+        if (tasks) {
+            // ÒÆ³ı¶©ÔÄµÄ·½·¨»òÕßÒÆ³ı·½·¨»Øµ÷½øĞĞµÄ¶©ÔÄ
+            const index = tasks.findIndex(f => f === fn || fn === f.callback)
+            if (index >= 0) {
+                tasks.splice(index, 1)
+            }
+        }
+    }
+
+    // ·¢²¼
+    emit(name, once=false, ...args) {
+        if (this.cache[name]) {
+            // ´´½¨¸±±¾
+            const tasks = this.cache[name].slice()
+            for (const task of tasks) {
+                // ĞèÒª´«µÄ²Î
+                task(...args)
+            }
+
+            if (once) {
+                delete this.cache[name]
+            }
+        }
+    }
+    
+}
+
+const eventBus = new EventEmitter()
+const task1 = () => { console.log('task1'); }
+const task2 = () => { console.log('task2'); }
+
+eventBus.on('task', task1)
+eventBus.on('task', task2)
+eventBus.off('task', task1)
+setTimeout(() => {
+  eventBus.emit('task') // task2
+}, 1000)
  

@@ -1,188 +1,188 @@
-const array = [{id: 1, text: "1"}, {id: 1, text: "1"}, {}, {}, NaN,  undefined, NaN, undefined, null, null, 22, 22, 22, 22, 3, 3, 0, 0, 1, 1, '1', '1', 'true', 'true', true, true, false]
-
-const array2 = [{id: 1, text: "1"}, {id: 1, text: "1"}, {id: 2, text: "1"}, {id: 2, text: "1"}]
-/**
- * æ•°ç»„å»é‡
- */
-
-/**
- * å…ˆè°ˆè°ˆ == å’Œ === çš„åŒºåˆ«
- * == é¦–å…ˆä¼šæ£€æµ‹ä¸¤ä¸ªæ“ä½œæ•°çš„æ•°æ®ç±»å‹ï¼Œ
- * è‹¥ç±»å‹ç›¸åŒï¼Œç›´æ¥æ¯”è¾ƒå€¼ï¼Œç±»å‹ä¸åŒï¼Œä¼šè¿›è¡Œç±»å‹è½¬æ¢ï¼Œè½¬æ¢ä¸ºç›¸åŒç±»å‹ï¼Œå†æ¯”è¾ƒå€¼
- * === ç›´æ¥æ¯”è¾ƒå€¼
- * 
- * == è½¬æ¢è¡¨
- * String - æ•°å­— => Stringè½¬ä¸ºæ•°å­—ç„¶åæ¯”è¾ƒ
- * boolean - ä»»ä½•ç±»å‹ => booleanè½¬ä¸ºæ•°å­— true 1ï¼Œfalse 0ï¼Œç„¶åæ¯”è¾ƒ
- * å¯¹è±¡ - ä»»ä½•æ•°æ®ç±»å‹ => å¯¹è±¡ä¼šè½¬ä¸ºåŸå§‹å€¼
- * null = undefined => ç›¸ç­‰
- * ä»»ä½•ç±»å‹ - null/undefined => false
- * 
- * ä¾‹å­ï¼š[] == "" => trueï¼Œ {} == "[object Object]" => false
- * 
- * å…¶ä»–ï¼šJSä¸­é™¤äº† falseï¼Œ0ï¼Œ""ï¼Œnullï¼Œundefinedï¼ŒNaNä¹‹å¤–çš„è§†ä¸ºtrue
- */
-
-/**
- * null å’Œ undefined çš„åŒºåˆ«
- * 
- * null è¡¨ç¤ºæœŸæœ›è¿™ä¸ªå˜é‡æ²¡æœ‰ä»»ä½•å€¼
- * undefined è¡¨ç¤ºå˜é‡æœªè¢«èµ‹å€¼ï¼Œæ˜¯ä¸€ä¸ªæ„å¤–çš„ç»“æœã€‚
- * 
- * typeof undefined ä¼šè¿”å› undefined
- * typeof null ä¼šè¿”å› object
- * 
- * undefined è½¬åŒ–ä¸ºæ•°å­—ä¼šè½¬ä¸º NaNï¼ŒNumber(undefined)
- * null è½¬åŒ–ä¸ºæ•°å­—ä¼šè½¬ä¸º 0ï¼ŒNumber(0)
- * 
- */
-
-
-// forå¾ªç¯
-// ç¼ºé™·ï¼šä¸èƒ½å»é‡ NaN å’Œ å¯¹è±¡
-function function_for(array) {
-    const res = []
-    for(const item of array) {
-        let isSame = false;
-        for (const value of res) {
-            if (item === value) {
-                isSame = true;
-                break;
-            }
-        }
-        if (!isSame) {
-            res.push(item)
-        }
-        
-    }
-    return res;
-}
-
-// åˆ©ç”¨ splice() + for å¾ªç¯åµŒå¥—
-// ç¼ºé™·ï¼šä¸èƒ½å»é‡ NaN å’Œ å¯¹è±¡
-function function_Splice_for(array) {
-    for(let i = 0; i < array.length; i++) {
-        for (let j = i + 1; j < array.length; j++) {
-            if (array[i] === array[j]) {
-                array.splice(j, 1)
-                j--
-            }
-        }
-    }
-
-    return array;
-}  
-
-// åˆ©ç”¨indexOf() + forå¾ªç¯å»é‡
-// ç¼ºé™·ï¼šä¸èƒ½å»é‡ NaN å’Œ å¯¹è±¡
-function function_indexOf_for(array) {
-    const res = []
-    for(const item of array) {
-        if (res.indexOf(item) !== -1) {
-            continue
-        }
-        res.push(item)
-    }
-
-    return res;
-}  
-
-// åˆ©ç”¨sort() + forå¾ªç¯å»é‡ï¼ˆå¿«æ…¢æŒ‡é’ˆï¼‰
-// ç¼ºé™·ï¼šä¸èƒ½å»é‡ NaN å’Œ å¯¹è±¡
-function function_sort_for(array) {
-    array.sort()
-    let i = 0;
-    for(let j = 1; j < array.length; j++) {
-        if (array[j] !== array[i]) {
-            i++;
-            array[i] = array[j]
-        }
-    }
-    array.length = i + 1
-
-    return array;
-}  
-
-// åˆ©ç”¨includes() + forå¾ªç¯å»é‡
-// ç¼ºé™·ï¼šä¸èƒ½å»é‡ å¯¹è±¡
-function function_includes_for(array) {
-    const res = []
-    for(const item of array) {
-        if (!res.includes(item)) {
-            res.push(item)
-        }
-    }
-
-    return res;
-}  
-
-// åˆ©ç”¨ filter + indexOf å»é‡
-// ç¼ºé™·ï¼šä¸èƒ½å»é‡ å¯¹è±¡ï¼Œä¸” NaN ä¼šè¢«å»æ‰ï¼Œå› ä¸º indexOf(NaN) = -1
-function function_fliter_indexOf(array) {
-    return array.filter((item, index) => array.indexOf(item) === index);
-}  
-
-// åˆ©ç”¨ Set æ•°æ®ç»“æ„å»é‡
-// ç¼ºé™·ï¼šä¸èƒ½å»é‡ å¯¹è±¡
-function function_Set(array) {
-    return [...new Set(array)];
-}  
-
-// åˆ©ç”¨ Set æ•°æ®ç»“æ„å»é‡
-// ç¼ºé™·ï¼šä¸èƒ½å»é‡ å¯¹è±¡
-function function_Map(array) {
-    const map = new Map()
-    for(const item of array) {
-        if (!map.has(item)) {
-            map.set(item);
-        }
-    }
-    return Array.from(map.keys())
-}  
-
-
-// åˆ©ç”¨ reduce() + includes() å»é‡
-// ç¼ºé™·ï¼šä¸èƒ½å»é‡ å¯¹è±¡
-function function_reduce_includes(array) {
-    return array.reduce((prev, cur) => {
-        return prev.includes(cur) ? prev : [...prev, cur]
-    }, [])
-}  
-     
-
-// åˆ©ç”¨findIndex() + Object.is()å»é‡
-// ç¼ºé™·ï¼šä¸èƒ½å»é‡ å¯¹è±¡
-function function_findIndex_Object_is(array) {
-    const result = [];
-    for (let i = 0; i < array.length; i++) {
-        const index = result.findIndex(item => Object.is(array[i], item))
-        if(index === -1) {
-            result.push(array[i]);
-        }
-    }
-
-    return result
-} 
-
-
-/**
- * å¯¹è±¡æ•°ç»„å»é‡
- * 
- * åŸºæœ¬ç±»å‹æ¯”è¾ƒçš„æ˜¯å€¼ï¼Œå¼•ç”¨ç±»å‹æ¯”è¾ƒçš„æ˜¯åœ°å€
- */
-
-// æ€è·¯1ï¼šå°†å¯¹è±¡è½¬ä¸ºå­—ç¬¦ä¸²è¿›è¡ŒåŸºæœ¬ç±»å‹çš„å»é‡
-function function_JSON_String(array) {
-    const strings = array.map(element => {
-        return JSON.stringify(element)
-    });
-
-    return Array.from(new Set(strings)).map((item) => JSON.parse(item))
-}
-
-// æ€è·¯2ï¼šä»¥å¯¹è±¡ä¸­ä¸èƒ½é‡å¤çš„é”®ä½œä¸ºåŒºåˆ†å€¼
-// ä»¥ id ä¸ºä¾‹å­
-function function_only(array) {
-    const map = new Map()
-    return array.filter((array) => !map.has(array.id) && map.set(array.id))
-}
+const array = [{id: 1, text: "1"}, {id: 1, text: "1"}, {}, {}, NaN,  undefined, NaN, undefined, null, null, 22, 22, 22, 22, 3, 3, 0, 0, 1, 1, '1', '1', 'true', 'true', true, true, false]
+
+const array2 = [{id: 1, text: "1"}, {id: 1, text: "1"}, {id: 2, text: "1"}, {id: 2, text: "1"}]
+/**
+ * Êı×éÈ¥ÖØ
+ */
+
+/**
+ * ÏÈÌ¸Ì¸ == ºÍ === µÄÇø±ğ
+ * == Ê×ÏÈ»á¼ì²âÁ½¸ö²Ù×÷ÊıµÄÊı¾İÀàĞÍ£¬
+ * ÈôÀàĞÍÏàÍ¬£¬Ö±½Ó±È½ÏÖµ£¬ÀàĞÍ²»Í¬£¬»á½øĞĞÀàĞÍ×ª»»£¬×ª»»ÎªÏàÍ¬ÀàĞÍ£¬ÔÙ±È½ÏÖµ
+ * === Ö±½Ó±È½ÏÖµ
+ * 
+ * == ×ª»»±í
+ * String - Êı×Ö => String×ªÎªÊı×ÖÈ»ºó±È½Ï
+ * boolean - ÈÎºÎÀàĞÍ => boolean×ªÎªÊı×Ö true 1£¬false 0£¬È»ºó±È½Ï
+ * ¶ÔÏó - ÈÎºÎÊı¾İÀàĞÍ => ¶ÔÏó»á×ªÎªÔ­Ê¼Öµ
+ * null = undefined => ÏàµÈ
+ * ÈÎºÎÀàĞÍ - null/undefined => false
+ * 
+ * Àı×Ó£º[] == "" => true£¬ {} == "[object Object]" => false
+ * 
+ * ÆäËû£ºJSÖĞ³ıÁË false£¬0£¬""£¬null£¬undefined£¬NaNÖ®ÍâµÄÊÓÎªtrue
+ */
+
+/**
+ * null ºÍ undefined µÄÇø±ğ
+ * 
+ * null ±íÊ¾ÆÚÍûÕâ¸ö±äÁ¿Ã»ÓĞÈÎºÎÖµ
+ * undefined ±íÊ¾±äÁ¿Î´±»¸³Öµ£¬ÊÇÒ»¸öÒâÍâµÄ½á¹û¡£
+ * 
+ * typeof undefined »á·µ»Ø undefined
+ * typeof null »á·µ»Ø object
+ * 
+ * undefined ×ª»¯ÎªÊı×Ö»á×ªÎª NaN£¬Number(undefined)
+ * null ×ª»¯ÎªÊı×Ö»á×ªÎª 0£¬Number(0)
+ * 
+ */
+
+
+// forÑ­»·
+// È±Ïİ£º²»ÄÜÈ¥ÖØ NaN ºÍ ¶ÔÏó
+function function_for(array) {
+    const res = []
+    for(const item of array) {
+        let isSame = false;
+        for (const value of res) {
+            if (item === value) {
+                isSame = true;
+                break;
+            }
+        }
+        if (!isSame) {
+            res.push(item)
+        }
+        
+    }
+    return res;
+}
+
+// ÀûÓÃ splice() + for Ñ­»·Ç¶Ì×
+// È±Ïİ£º²»ÄÜÈ¥ÖØ NaN ºÍ ¶ÔÏó
+function function_Splice_for(array) {
+    for(let i = 0; i < array.length; i++) {
+        for (let j = i + 1; j < array.length; j++) {
+            if (array[i] === array[j]) {
+                array.splice(j, 1)
+                j--
+            }
+        }
+    }
+
+    return array;
+}  
+
+// ÀûÓÃindexOf() + forÑ­»·È¥ÖØ
+// È±Ïİ£º²»ÄÜÈ¥ÖØ NaN ºÍ ¶ÔÏó
+function function_indexOf_for(array) {
+    const res = []
+    for(const item of array) {
+        if (res.indexOf(item) !== -1) {
+            continue
+        }
+        res.push(item)
+    }
+
+    return res;
+}  
+
+// ÀûÓÃsort() + forÑ­»·È¥ÖØ£¨¿ìÂıÖ¸Õë£©
+// È±Ïİ£º²»ÄÜÈ¥ÖØ NaN ºÍ ¶ÔÏó
+function function_sort_for(array) {
+    array.sort()
+    let i = 0;
+    for(let j = 1; j < array.length; j++) {
+        if (array[j] !== array[i]) {
+            i++;
+            array[i] = array[j]
+        }
+    }
+    array.length = i + 1
+
+    return array;
+}  
+
+// ÀûÓÃincludes() + forÑ­»·È¥ÖØ
+// È±Ïİ£º²»ÄÜÈ¥ÖØ ¶ÔÏó
+function function_includes_for(array) {
+    const res = []
+    for(const item of array) {
+        if (!res.includes(item)) {
+            res.push(item)
+        }
+    }
+
+    return res;
+}  
+
+// ÀûÓÃ filter + indexOf È¥ÖØ
+// È±Ïİ£º²»ÄÜÈ¥ÖØ ¶ÔÏó£¬ÇÒ NaN »á±»È¥µô£¬ÒòÎª indexOf(NaN) = -1
+function function_fliter_indexOf(array) {
+    return array.filter((item, index) => array.indexOf(item) === index);
+}  
+
+// ÀûÓÃ Set Êı¾İ½á¹¹È¥ÖØ
+// È±Ïİ£º²»ÄÜÈ¥ÖØ ¶ÔÏó
+function function_Set(array) {
+    return [...new Set(array)];
+}  
+
+// ÀûÓÃ Set Êı¾İ½á¹¹È¥ÖØ
+// È±Ïİ£º²»ÄÜÈ¥ÖØ ¶ÔÏó
+function function_Map(array) {
+    const map = new Map()
+    for(const item of array) {
+        if (!map.has(item)) {
+            map.set(item);
+        }
+    }
+    return Array.from(map.keys())
+}  
+
+
+// ÀûÓÃ reduce() + includes() È¥ÖØ
+// È±Ïİ£º²»ÄÜÈ¥ÖØ ¶ÔÏó
+function function_reduce_includes(array) {
+    return array.reduce((prev, cur) => {
+        return prev.includes(cur) ? prev : [...prev, cur]
+    }, [])
+}  
+     
+
+// ÀûÓÃfindIndex() + Object.is()È¥ÖØ
+// È±Ïİ£º²»ÄÜÈ¥ÖØ ¶ÔÏó
+function function_findIndex_Object_is(array) {
+    const result = [];
+    for (let i = 0; i < array.length; i++) {
+        const index = result.findIndex(item => Object.is(array[i], item))
+        if(index === -1) {
+            result.push(array[i]);
+        }
+    }
+
+    return result
+} 
+
+
+/**
+ * ¶ÔÏóÊı×éÈ¥ÖØ
+ * 
+ * »ù±¾ÀàĞÍ±È½ÏµÄÊÇÖµ£¬ÒıÓÃÀàĞÍ±È½ÏµÄÊÇµØÖ·
+ */
+
+// Ë¼Â·1£º½«¶ÔÏó×ªÎª×Ö·û´®½øĞĞ»ù±¾ÀàĞÍµÄÈ¥ÖØ
+function function_JSON_String(array) {
+    const strings = array.map(element => {
+        return JSON.stringify(element)
+    });
+
+    return Array.from(new Set(strings)).map((item) => JSON.parse(item))
+}
+
+// Ë¼Â·2£ºÒÔ¶ÔÏóÖĞ²»ÄÜÖØ¸´µÄ¼ü×÷ÎªÇø·ÖÖµ
+// ÒÔ id ÎªÀı×Ó
+function function_only(array) {
+    const map = new Map()
+    return array.filter((array) => !map.has(array.id) && map.set(array.id))
+}

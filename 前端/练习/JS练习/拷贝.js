@@ -1,107 +1,107 @@
-const obj = {
-    name: 1,
-    key: 1,
-    age: 2,
-    value: NaN,
-    array: [],
-    obj: {}
-}
-
-// æµ…æ‹·è´
-
-// Object.assign()
-function shallowCopy(obj) {
-    return Object.assign(obj)
-}
-
-// å±•å¼€è¿ç®—ç¬¦ï¼ˆ...ï¼‰
-function copy(obj) {
-    return obj instanceof Array ? [...obj] : {...obj}
-}
-
-// åªè€ƒè™‘å¯¹è±¡ç±»å‹
-function shallowCopyOld(obj) {
-    if (typeof obj !== 'object') return
-    const newObj = obj instanceof Array ? [] : {}
-    for (const key of obj.keys()) {
-        if (obj.hasOwnProperty(key)) {
-            newObj[key] = obj[key]
-        }
-    }
-
-    return newObj
-}
-
-// æ·±æ‹·è´
-
-// åºåˆ—åŒ–ä¸ååºåˆ—åŒ–
-// ä¸èƒ½å¤„ç†å‡½æ•°ã€undefinedã€NaNã€Infinityã€Symbolã€å¾ªç¯å¼•ç”¨ç­‰ç‰¹æ®Šå€¼
-JSON.parse(JSON.stringify(obj));
-
-// ä½¿ç”¨åº“å‡½æ•°
-// const _ = require('lodash');
-// const copyData = _.cloneDeep(original);
-
-// é€’å½’
-// åˆ†åˆ«è¿›è¡Œå¤„ç†
-function deepCopy(obj, hash = new WeakMap()) {
-    // å¤„ç† nullã€undefined å’Œéå¯¹è±¡ç±»å‹
-    if (obj === null || typeof obj !== 'object') {
-        return obj;
-    }
-
-    // å¤„ç†å¾ªç¯å¼•ç”¨
-    if (hash.has(obj)) {
-        return hash.get(obj)
-    }
-
-    // å¤„ç†Dateç±»å‹
-    if (obj instanceof Date) {
-        return new Date(obj);
-    }
-
-    // å¤„ç†Arrayç±»å‹
-    if (Array.isArray(obj)) {
-        const copy = [];
-        hash.set(obj, copy);
-        for (let i = 0; i < obj.length; i++) {
-            copy[i] = deepCopy(obj[i], hash);
-        }
-        return copy;
-    }
-
-    // å¤„ç†æ™®é€šå¯¹è±¡
-    const copy = {}
-    hash.set(obj, copy)
-    for (const key of obj) {
-        if (obj.hasOwnProperty(key)) {
-            copy[key] = deepCopy(obj[key], hash);
-        }
-    }
-  
-
-    // å¤„ç† Map å’Œ Set ç±»å‹
-    // Map
-    if (obj instanceof Map) {
-        const mapCopy = new Map();
-        hash.set(obj, mapCopy);
-        obj.forEach((value, key) => {
-            mapCopy.set(deepCopy(key, hash), deepCopy(value, hash));
-        });
-        return mapCopy;
-    }
-
-    // Set
-    if (obj instanceof Set) {
-        const setCopy = new Set();
-        hash.set(obj, setCopy);
-        obj.forEach((value, key) => {
-            setCopy.add(deepCopy(key, hash), deepCopy(value, hash));
-        });
-        return cosetCopyy;
-    }
-
-    // ç­‰æ–¹æ³•
-
-    return copy;
-}
+const obj = {
+    name: 1,
+    key: 1,
+    age: 2,
+    value: NaN,
+    array: [],
+    obj: {}
+}
+
+// Ç³¿½±´
+
+// Object.assign()
+function shallowCopy(obj) {
+    return Object.assign(obj)
+}
+
+// Õ¹¿ªÔËËã·û£¨...£©
+function copy(obj) {
+    return obj instanceof Array ? [...obj] : {...obj}
+}
+
+// Ö»¿¼ÂÇ¶ÔÏóÀàĞÍ
+function shallowCopyOld(obj) {
+    if (typeof obj !== 'object') return
+    const newObj = obj instanceof Array ? [] : {}
+    for (const key of obj.keys()) {
+        if (obj.hasOwnProperty(key)) {
+            newObj[key] = obj[key]
+        }
+    }
+
+    return newObj
+}
+
+// Éî¿½±´
+
+// ĞòÁĞ»¯Óë·´ĞòÁĞ»¯
+// ²»ÄÜ´¦Àíº¯Êı¡¢undefined¡¢NaN¡¢Infinity¡¢Symbol¡¢Ñ­»·ÒıÓÃµÈÌØÊâÖµ
+JSON.parse(JSON.stringify(obj));
+
+// Ê¹ÓÃ¿âº¯Êı
+// const _ = require('lodash');
+// const copyData = _.cloneDeep(original);
+
+// µİ¹é
+// ·Ö±ğ½øĞĞ´¦Àí
+function deepCopy(obj, hash = new WeakMap()) {
+    // ´¦Àí null¡¢undefined ºÍ·Ç¶ÔÏóÀàĞÍ
+    if (obj === null || typeof obj !== 'object') {
+        return obj;
+    }
+
+    // ´¦ÀíÑ­»·ÒıÓÃ
+    if (hash.has(obj)) {
+        return hash.get(obj)
+    }
+
+    // ´¦ÀíDateÀàĞÍ
+    if (obj instanceof Date) {
+        return new Date(obj);
+    }
+
+    // ´¦ÀíArrayÀàĞÍ
+    if (Array.isArray(obj)) {
+        const copy = [];
+        hash.set(obj, copy);
+        for (let i = 0; i < obj.length; i++) {
+            copy[i] = deepCopy(obj[i], hash);
+        }
+        return copy;
+    }
+
+    // ´¦ÀíÆÕÍ¨¶ÔÏó
+    const copy = {}
+    hash.set(obj, copy)
+    for (const key of obj) {
+        if (obj.hasOwnProperty(key)) {
+            copy[key] = deepCopy(obj[key], hash);
+        }
+    }
+  
+
+    // ´¦Àí Map ºÍ Set ÀàĞÍ
+    // Map
+    if (obj instanceof Map) {
+        const mapCopy = new Map();
+        hash.set(obj, mapCopy);
+        obj.forEach((value, key) => {
+            mapCopy.set(deepCopy(key, hash), deepCopy(value, hash));
+        });
+        return mapCopy;
+    }
+
+    // Set
+    if (obj instanceof Set) {
+        const setCopy = new Set();
+        hash.set(obj, setCopy);
+        obj.forEach((value, key) => {
+            setCopy.add(deepCopy(key, hash), deepCopy(value, hash));
+        });
+        return cosetCopyy;
+    }
+
+    // µÈ·½·¨
+
+    return copy;
+}

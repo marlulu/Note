@@ -1,123 +1,123 @@
-// forEach
-Array.prototype.forEach = function(callbackFn, thisArg) {
-    if (this === null) {
-        throw new TypeError('this is null or not defined')
-    }
-    if (typeof callbackFn !== 'function') {
-        return new TypeError(callback + ' is not a function')
-    } 
-    const array = Object(this)
-    // ç¡®ä¿è½¬æ¢åŽçš„å€¼ä¸ºæ­£æ•´æ•°ï¼Œä¸”åœ¨æ— æ„ä¹‰çš„æƒ…å†µé»˜è®¤å€¼ä¸º 0 
-    // åº•å±‚ï¼šéž number -> number -> Uint 32
-    const len = array.length >>> 0 
-    let k = 0
-    while (k < len) {
-        if (k in array) {
-            callbackFn.call(thisArg, array[k], k, array);
-        }
-        k++
-    }
-}
-
-// map
-Array.prototype.map = function(callbackFn, thisArg) {
-    if (this === null) {
-        throw new TypeError('this is null or not defined')
-    }
-    if (typeof callbackFn !== 'function') {
-        return new TypeError(callback + ' is not a function')
-    } 
-    const array = Object(this)
-    // ç¡®ä¿è½¬æ¢åŽçš„å€¼ä¸ºæ­£æ•´æ•°ï¼Œä¸”åœ¨æ— æ„ä¹‰çš„æƒ…å†µé»˜è®¤å€¼ä¸º 0 
-    // åº•å±‚ï¼šéž number -> number -> Uint 32
-    const len = array.length >>> 0 
-    let k = 0, res = []
-    while (k < len) {
-        if (k in array) {
-            res[k] = callbackFn.call(thisArg, array[k], k, array);
-        }
-        k++
-    }
-    return res
-}
-
-// filter
-Array.prototype.filter = function(callbackFn, thisArg) {
-    if (this === null) {
-        throw new TypeError('this is null or not defined')
-    }
-    if (typeof callbackFn !== 'function') {
-        return new TypeError(callback + ' is not a function')
-    } 
-    const array = Object(this)
-    // ç¡®ä¿è½¬æ¢åŽçš„å€¼ä¸ºæ­£æ•´æ•°ï¼Œä¸”åœ¨æ— æ„ä¹‰çš„æƒ…å†µé»˜è®¤å€¼ä¸º 0 
-    // åº•å±‚ï¼šéž number -> number -> Uint 32
-    const len = array.length >>> 0 
-    let k = 0, res = []
-    while (k < len) {
-        if (k in array) {
-            if (callbackFn.call(thisArg, array[k], k, array)) {
-                res.push(array[k])
-            }
-        }
-        k++
-    }
-    return res
-}
-
-// some
-// é€šè¿‡ callbackFn å¯»æ‰¾çœŸå€¼ï¼Œæ‰¾åˆ°ç›´æŽ¥è¿”å›ž trueï¼Œæ‰¾ä¸åˆ°å°±ä¸‹ä¸€ä¸ªå…ƒç´ 
-// å½“æ‰€æœ‰å…ƒç´ éƒ½è¿”å›žå‡å€¼ï¼Œå°±ä¼šè¿”å›ž false
-Array.prototype.some = function(callbackFn, thisArg) {
-    if (this === null) {
-        throw new TypeError('this is null or not defined')
-    }
-    if (typeof callbackFn !== 'function') {
-        return new TypeError(callback + ' is not a function')
-    } 
-    const array = Object(this)
-    // ç¡®ä¿è½¬æ¢åŽçš„å€¼ä¸ºæ­£æ•´æ•°ï¼Œä¸”åœ¨æ— æ„ä¹‰çš„æƒ…å†µé»˜è®¤å€¼ä¸º 0 
-    // åº•å±‚ï¼šéž number -> number -> Uint 32
-    const len = array.length >>> 0 
-    let k = 0
-    while (k < len) {
-        if (k in array) {
-            if (callbackFn.call(thisArg, array[k], k, array)) {
-                return true
-            }
-        }
-        k++
-    }
-    return false
-}
-
-// reduce
-Array.prototype.reduce  = function(callbackFn, initialValue) {
-    if (this === null) {
-        throw new TypeError('this is null or not defined')
-    }
-    if (typeof callbackFn !== 'function') {
-        return new TypeError(callbackFn + ' is not a function')
-    } 
-    const array = Object(this)
-    // ç¡®ä¿è½¬æ¢åŽçš„å€¼ä¸ºæ­£æ•´æ•°ï¼Œä¸”åœ¨æ— æ„ä¹‰çš„æƒ…å†µé»˜è®¤å€¼ä¸º 0 
-    // åº•å±‚ï¼šéž number -> number -> Uint 32
-    const len = array.length >>> 0 
-    let k = 0, access
-    if (arguments.length > 1) {
-        access = initialValue
-    } else {
-        if (len === 0) {
-            throw new TypeError( 'Reduce of empty array with no initial value' );
-        }
-        access = array[k++]
-    }
-    while (k < len) {
-        if (k in array) {
-            access = callbackFn(access, array[k], k, array)
-        }
-        k++
-    }
-
-    return access
+// forEach
+Array.prototype.forEach = function(callbackFn, thisArg) {
+    if (this === null) {
+        throw new TypeError('this is null or not defined')
+    }
+    if (typeof callbackFn !== 'function') {
+        return new TypeError(callback + ' is not a function')
+    } 
+    const array = Object(this)
+    // È·±£×ª»»ºóµÄÖµÎªÕýÕûÊý£¬ÇÒÔÚÎÞÒâÒåµÄÇé¿öÄ¬ÈÏÖµÎª 0 
+    // µ×²ã£º·Ç number -> number -> Uint 32
+    const len = array.length >>> 0 
+    let k = 0
+    while (k < len) {
+        if (k in array) {
+            callbackFn.call(thisArg, array[k], k, array);
+        }
+        k++
+    }
+}
+
+// map
+Array.prototype.map = function(callbackFn, thisArg) {
+    if (this === null) {
+        throw new TypeError('this is null or not defined')
+    }
+    if (typeof callbackFn !== 'function') {
+        return new TypeError(callback + ' is not a function')
+    } 
+    const array = Object(this)
+    // È·±£×ª»»ºóµÄÖµÎªÕýÕûÊý£¬ÇÒÔÚÎÞÒâÒåµÄÇé¿öÄ¬ÈÏÖµÎª 0 
+    // µ×²ã£º·Ç number -> number -> Uint 32
+    const len = array.length >>> 0 
+    let k = 0, res = []
+    while (k < len) {
+        if (k in array) {
+            res[k] = callbackFn.call(thisArg, array[k], k, array);
+        }
+        k++
+    }
+    return res
+}
+
+// filter
+Array.prototype.filter = function(callbackFn, thisArg) {
+    if (this === null) {
+        throw new TypeError('this is null or not defined')
+    }
+    if (typeof callbackFn !== 'function') {
+        return new TypeError(callback + ' is not a function')
+    } 
+    const array = Object(this)
+    // È·±£×ª»»ºóµÄÖµÎªÕýÕûÊý£¬ÇÒÔÚÎÞÒâÒåµÄÇé¿öÄ¬ÈÏÖµÎª 0 
+    // µ×²ã£º·Ç number -> number -> Uint 32
+    const len = array.length >>> 0 
+    let k = 0, res = []
+    while (k < len) {
+        if (k in array) {
+            if (callbackFn.call(thisArg, array[k], k, array)) {
+                res.push(array[k])
+            }
+        }
+        k++
+    }
+    return res
+}
+
+// some
+// Í¨¹ý callbackFn Ñ°ÕÒÕæÖµ£¬ÕÒµ½Ö±½Ó·µ»Ø true£¬ÕÒ²»µ½¾ÍÏÂÒ»¸öÔªËØ
+// µ±ËùÓÐÔªËØ¶¼·µ»Ø¼ÙÖµ£¬¾Í»á·µ»Ø false
+Array.prototype.some = function(callbackFn, thisArg) {
+    if (this === null) {
+        throw new TypeError('this is null or not defined')
+    }
+    if (typeof callbackFn !== 'function') {
+        return new TypeError(callback + ' is not a function')
+    } 
+    const array = Object(this)
+    // È·±£×ª»»ºóµÄÖµÎªÕýÕûÊý£¬ÇÒÔÚÎÞÒâÒåµÄÇé¿öÄ¬ÈÏÖµÎª 0 
+    // µ×²ã£º·Ç number -> number -> Uint 32
+    const len = array.length >>> 0 
+    let k = 0
+    while (k < len) {
+        if (k in array) {
+            if (callbackFn.call(thisArg, array[k], k, array)) {
+                return true
+            }
+        }
+        k++
+    }
+    return false
+}
+
+// reduce
+Array.prototype.reduce  = function(callbackFn, initialValue) {
+    if (this === null) {
+        throw new TypeError('this is null or not defined')
+    }
+    if (typeof callbackFn !== 'function') {
+        return new TypeError(callbackFn + ' is not a function')
+    } 
+    const array = Object(this)
+    // È·±£×ª»»ºóµÄÖµÎªÕýÕûÊý£¬ÇÒÔÚÎÞÒâÒåµÄÇé¿öÄ¬ÈÏÖµÎª 0 
+    // µ×²ã£º·Ç number -> number -> Uint 32
+    const len = array.length >>> 0 
+    let k = 0, access
+    if (arguments.length > 1) {
+        access = initialValue
+    } else {
+        if (len === 0) {
+            throw new TypeError( 'Reduce of empty array with no initial value' );
+        }
+        access = array[k++]
+    }
+    while (k < len) {
+        if (k in array) {
+            access = callbackFn(access, array[k], k, array)
+        }
+        k++
+    }
+
+    return access
 }

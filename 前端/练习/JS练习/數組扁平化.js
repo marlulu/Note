@@ -1,61 +1,61 @@
-// å°†å¤šç»´çš„æ•°ç»„è½¬ä¸ºä¸€ç»´æ•°ç»„
-
-const nestedArray = [1, [2, [3, [4]], 5]];
-
-const arr = [1, [2, [3, [4]], 5]];
-
-const values = [1, [2, [3, [4]], 5]];
-
-// é€’å½’
-function flattenArray(array) {
-    let result = []
-    array.forEach(element => {
-        if (Array.isArray(element)) {
-            result = result.concat(flattenArray(element))
-        }else {
-            result.push(element)
-        }
-    });
-    return result
-}
-
-// ä½¿ç”¨ Array.prototype.flat()
-// é»˜è®¤æ‰å¹³åŒ–ä¸€å±‚
-// Infinity è¡¨ç¤ºæ— é™å±‚
-const flastArray = nestedArray.flat(Infinity)
-
-// ä½¿ç”¨å †æ ˆï¼ˆStackï¼‰æ¨¡æ‹Ÿé€’å½’
-function flattenStack(array) {
-    const stack = [...array]
-    const result = []
-    while(stack.length) {
-        const next = stack.pop()
-        if (Array.isArray(next)) {
-            stack.push(...next)
-        } else {
-            result.push(next)
-        }
-    }
-    return result.reverse()
-}
-
-// ä½¿ç”¨ç”Ÿæˆå™¨ï¼ˆGeneratorï¼‰
-function* flattenGenerator(arr) {
-    for(const item of arr) {
-        if (Array.isArray(item)) {
-            yield* flattenGenerator(item)
-        } else {
-            yield item
-        }
-    }
-}
-const newArray = [...flattenGenerator(arr)]
-
-// ä½¿ç”¨æ‰©å±•è¿ç®—ç¬¦ï¼ˆ...ï¼‰å’Œ reduce
-// concat ä¼ é€’éžæ•°ç»„å€¼ä¼šä½œä¸ºå•ä¸ªå…ƒç´ åŠ åˆ°ç»“æžœæ•°ç»„ï¼Œè‹¥å…¶ä¸­æœ‰æ•°ç»„å°±ä½œä¸ºæ•°ç»„å¤„ç†
-// ç›¸å½“äºŽåªæ‰å¹³åŒ–ä¸€å±‚
-function flattenReduce(arr) {
-    return arr.reduce((prev, cur) => Array.isArray(cur) ? prev.concat(flattenReduce(cur)) : prev.concat(cur), [])
-}
-
+// ½«¶àÎ¬µÄÊý×é×ªÎªÒ»Î¬Êý×é
+
+const nestedArray = [1, [2, [3, [4]], 5]];
+
+const arr = [1, [2, [3, [4]], 5]];
+
+const values = [1, [2, [3, [4]], 5]];
+
+// µÝ¹é
+function flattenArray(array) {
+    let result = []
+    array.forEach(element => {
+        if (Array.isArray(element)) {
+            result = result.concat(flattenArray(element))
+        }else {
+            result.push(element)
+        }
+    });
+    return result
+}
+
+// Ê¹ÓÃ Array.prototype.flat()
+// Ä¬ÈÏ±âÆ½»¯Ò»²ã
+// Infinity ±íÊ¾ÎÞÏÞ²ã
+const flastArray = nestedArray.flat(Infinity)
+
+// Ê¹ÓÃ¶ÑÕ»£¨Stack£©Ä£ÄâµÝ¹é
+function flattenStack(array) {
+    const stack = [...array]
+    const result = []
+    while(stack.length) {
+        const next = stack.pop()
+        if (Array.isArray(next)) {
+            stack.push(...next)
+        } else {
+            result.push(next)
+        }
+    }
+    return result.reverse()
+}
+
+// Ê¹ÓÃÉú³ÉÆ÷£¨Generator£©
+function* flattenGenerator(arr) {
+    for(const item of arr) {
+        if (Array.isArray(item)) {
+            yield* flattenGenerator(item)
+        } else {
+            yield item
+        }
+    }
+}
+const newArray = [...flattenGenerator(arr)]
+
+// Ê¹ÓÃÀ©Õ¹ÔËËã·û£¨...£©ºÍ reduce
+// concat ´«µÝ·ÇÊý×éÖµ»á×÷Îªµ¥¸öÔªËØ¼Óµ½½á¹ûÊý×é£¬ÈôÆäÖÐÓÐÊý×é¾Í×÷ÎªÊý×é´¦Àí
+// Ïàµ±ÓÚÖ»±âÆ½»¯Ò»²ã
+function flattenReduce(arr) {
+    return arr.reduce((prev, cur) => Array.isArray(cur) ? prev.concat(flattenReduce(cur)) : prev.concat(cur), [])
+}
+
 // console.log([1,2,3].concat(1,2,3,[4,[5,6]]))

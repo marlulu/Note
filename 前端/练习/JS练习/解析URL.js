@@ -1,20 +1,20 @@
-// URLSearchParams æ–¹æ³•
-// åˆ›å»ºä¸€ä¸ªURLSearchParamså®žä¾‹
-const urlSearchParams = new URLSearchParams(window.location.search)
-// æŠŠé”®å€¼å¯¹åˆ—è¡¨è½¬æ¢ä¸ºä¸€ä¸ªå¯¹è±¡
-const params = Object.fromEntries(urlSearchParams.entries())
-
-// ä½¿ç”¨ split
-function parseParam(url) {
-    const res = {}
-    if (url.include("?")) {
-        const str = url.split("?")[1];
-        const arr = str.split("&")
-        arr.forEach(item => {
-            const key = item.split("=")[0]
-            const val = item.split("=")[1]
-            res[key] = decodeURIComponent(val)
-        })
-    }
-    return res
+// URLSearchParams ·½·¨
+// ´´½¨Ò»¸öURLSearchParamsÊµÀý
+const urlSearchParams = new URLSearchParams(window.location.search)
+// °Ñ¼üÖµ¶ÔÁÐ±í×ª»»ÎªÒ»¸ö¶ÔÏó
+const params = Object.fromEntries(urlSearchParams.entries())
+
+// Ê¹ÓÃ split
+function parseParam(url) {
+    const res = {}
+    if (url.include("?")) {
+        const str = url.split("?")[1];
+        const arr = str.split("&")
+        arr.forEach(item => {
+            const key = item.split("=")[0]
+            const val = item.split("=")[1]
+            res[key] = decodeURIComponent(val)
+        })
+    }
+    return res
 }

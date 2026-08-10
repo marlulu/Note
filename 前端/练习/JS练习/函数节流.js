@@ -1,15 +1,15 @@
-// è§¦å‘é«˜é¢‘äº‹ä»¶ï¼Œä¸” N ç§’å†…åªæ‰§è¡Œä¸€æ¬¡ã€‚
-
-// ç®€æ˜“ç‰ˆ
-function throttle(func, ms) {
-    let previous = 0
-    return function() {
-        let now = Date.now()
-        let context = this;
-        let args = arguments;
-        if (now - previous > ms) {
-            func.apply(args, context)
-            previous = now
-        }
-    }
+// ´¥·¢¸ßÆµÊÂ¼þ£¬ÇÒ N ÃëÄÚÖ»Ö´ÐÐÒ»´Î¡£
+
+// ¼òÒ×°æ
+function throttle(func, ms) {
+    let previous = 0
+    return function() {
+        let now = Date.now()
+        let context = this;
+        let args = arguments;
+        if (now - previous > ms) {
+            func.apply(args, context)
+            previous = now
+        }
+    }
 }

@@ -1,55 +1,55 @@
-// å­—ç¬¦ä¸²æ¨¡ç‰ˆ ``
-// ä¿ç•™äº†æ¢è¡Œç¬¦ï¼Œå¯è·¨è¡Œå®šä¹‰
-const poem = `
-Roses are red,
-Violets are blue,
-Sugar is sweet,
-And so are you.
-`;
-
-// å­—ç¬¦ä¸²æ’å€¼
-// åœ¨ä¸€ä¸ªè¿ç»­å®šä¹‰ä¸­æ’å…¥ä¸€ä¸ªæˆ–å¤šä¸ªå€¼
-// éåŸå§‹å€¼ä¼šåˆ¶å®šè°ƒç”¨ toString()
-// åŸå§‹å€¼ï¼šNumber String Boolean Undefined Null Symbol BigInt
-const value = 5
-const exponent = 'second'
-const interStrings = `${ value } to the ${ exponent} power is ${ value * value}`;
-
-// æ¨¡ç‰ˆå­—é¢é‡æ ‡ç­¾å‡½æ•°
-// é€šè¿‡å‰ç¼€åˆ°æ¨¡ç‰ˆå­—é¢é‡æ¥åº”ç”¨è‡ªå®šä¹‰è¡Œä¸º
-
-// strings çš„é•¿åº¦æ€»æ˜¯ (${}) å‡ºç°çš„æ¬¡æ•°åŠ ä¸€ï¼Œä¸è¶³çš„ç”¨ç©ºå­—ç¬¦ä¸² '' ä»£æ›¿
-function simpleTag(strings, ...expressions) {
-    console.log(strings)
-    for (const expression of expressions) {
-        console.log(expression)
-    }
-
-    return null
-}
-
-function render(template, data) {
-  const reg = /\{\{(\w+)\}\}/; // æ¨¡æ¿å­—ç¬¦ä¸²æ­£åˆ™
-  if (reg.test(template)) { // åˆ¤æ–­æ¨¡æ¿é‡Œæ˜¯å¦æœ‰æ¨¡æ¿å­—ç¬¦ä¸²
-    const name = reg.exec(template)[1]; // æŸ¥æ‰¾å½“å‰æ¨¡æ¿é‡Œç¬¬ä¸€ä¸ªæ¨¡æ¿å­—ç¬¦ä¸²çš„å­—æ®µ
-    template = template.replace(reg, data[name]); // å°†ç¬¬ä¸€ä¸ªæ¨¡æ¿å­—ç¬¦ä¸²æ¸²æŸ“
-    return render(template, data); // é€’å½’çš„æ¸²æŸ“å¹¶è¿”å›æ¸²æŸ“åçš„ç»“æ„
-  }
-  return template; // å¦‚æœæ¨¡æ¿æ²¡æœ‰æ¨¡æ¿å­—ç¬¦ä¸²ç›´æ¥è¿”å›
-}
-
-// Stirng.raw() åˆ›å»ºåŸå§‹å­—ç¬¦ä¸²ï¼Œä¸èƒ½å¤„ç†è½¬ä¹‰å­—ç¬¦
-const html = (strings, ...values) => String.raw({ raw: strings }, ...values);
-// ä¸€äº›æ ¼å¼åŒ–ç¨‹åºä¼šå°†æ­¤å­—é¢é‡çš„å†…å®¹æ ¼å¼åŒ–ä¸º HTML
-const doc = html`<!doctype html>
-  <html lang="en-US">
-    <head>
-      <title>Hello</title>
-    </head>
-    <body>
-      <h1>Hello world!</h1>
-    </body>
-  </html>`;
-
-
+// ×Ö·û´®Ä£°æ ``
+// ±£ÁôÁË»»ĞĞ·û£¬¿É¿çĞĞ¶¨Òå
+const poem = `
+Roses are red,
+Violets are blue,
+Sugar is sweet,
+And so are you.
+`;
+
+// ×Ö·û´®²åÖµ
+// ÔÚÒ»¸öÁ¬Ğø¶¨ÒåÖĞ²åÈëÒ»¸ö»ò¶à¸öÖµ
+// ·ÇÔ­Ê¼Öµ»áÖÆ¶¨µ÷ÓÃ toString()
+// Ô­Ê¼Öµ£ºNumber String Boolean Undefined Null Symbol BigInt
+const value = 5
+const exponent = 'second'
+const interStrings = `${ value } to the ${ exponent} power is ${ value * value}`;
+
+// Ä£°æ×ÖÃæÁ¿±êÇ©º¯Êı
+// Í¨¹ıÇ°×ºµ½Ä£°æ×ÖÃæÁ¿À´Ó¦ÓÃ×Ô¶¨ÒåĞĞÎª
+
+// strings µÄ³¤¶È×ÜÊÇ (${}) ³öÏÖµÄ´ÎÊı¼ÓÒ»£¬²»×ãµÄÓÃ¿Õ×Ö·û´® '' ´úÌæ
+function simpleTag(strings, ...expressions) {
+    console.log(strings)
+    for (const expression of expressions) {
+        console.log(expression)
+    }
+
+    return null
+}
+
+function render(template, data) {
+  const reg = /\{\{(\w+)\}\}/; // Ä£°å×Ö·û´®ÕıÔò
+  if (reg.test(template)) { // ÅĞ¶ÏÄ£°åÀïÊÇ·ñÓĞÄ£°å×Ö·û´®
+    const name = reg.exec(template)[1]; // ²éÕÒµ±Ç°Ä£°åÀïµÚÒ»¸öÄ£°å×Ö·û´®µÄ×Ö¶Î
+    template = template.replace(reg, data[name]); // ½«µÚÒ»¸öÄ£°å×Ö·û´®äÖÈ¾
+    return render(template, data); // µİ¹éµÄäÖÈ¾²¢·µ»ØäÖÈ¾ºóµÄ½á¹¹
+  }
+  return template; // Èç¹ûÄ£°åÃ»ÓĞÄ£°å×Ö·û´®Ö±½Ó·µ»Ø
+}
+
+// Stirng.raw() ´´½¨Ô­Ê¼×Ö·û´®£¬²»ÄÜ´¦Àí×ªÒå×Ö·û
+const html = (strings, ...values) => String.raw({ raw: strings }, ...values);
+// Ò»Ğ©¸ñÊ½»¯³ÌĞò»á½«´Ë×ÖÃæÁ¿µÄÄÚÈİ¸ñÊ½»¯Îª HTML
+const doc = html`<!doctype html>
+  <html lang="en-US">
+    <head>
+      <title>Hello</title>
+    </head>
+    <body>
+      <h1>Hello world!</h1>
+    </body>
+  </html>`;
+
+
   

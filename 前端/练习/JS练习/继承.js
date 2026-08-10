@@ -1,17 +1,17 @@
-// çŸ¥è¯†ç‚¹ï¼šåŸå‹ï¼Œç»§æ‰¿
-
-// åŸå‹é“¾ç»§æ‰¿
-function Animal() {
-    this.colors = ['black', 'white']
-}
-
-Animal.prototype.getColor = function() {
-    return this.colors
-}
-
-function Dog() {}
-Dog.prototype =  new Animal()
-
-
-// ç»„åˆç»§æ‰¿
-// å¯„ç”Ÿå¼ç»„åˆç»§æ‰¿
+// ÖªÊ¶µã£ºÔ­ĞÍ£¬¼Ì³Ğ
+
+// Ô­ĞÍÁ´¼Ì³Ğ
+function Animal() {
+    this.colors = ['black', 'white']
+}
+
+Animal.prototype.getColor = function() {
+    return this.colors
+}
+
+function Dog() {}
+Dog.prototype =  new Animal()
+
+
+// ×éºÏ¼Ì³Ğ
+// ¼ÄÉúÊ½×éºÏ¼Ì³Ğ

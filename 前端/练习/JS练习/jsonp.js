@@ -1,27 +1,27 @@
-const jsonp = ({url, params, callbackName}) => {
-    // åˆ›å»ºå®Œæ•´ url
-    const generateUrl = () => {
-        let dataSrc = ''
-        for (const key in params) {
-            if (params.hasOwnProperty(key)) {
-                dataSrc += `${key}=${params[key]}&`
-            }
-        }
-
-        dataSrc += `callback=${callbackName}`
-        return `${url}?${dataSrc}`
-    }
-
-    // å‘é€
-    return new Promise((resolve, reject) => {
-        const originalCallback = window[callbackName];
-        const scriptEle = document.createElement('script')
-        scriptEle.src = generateUrl()
-        document.body.appendChild(scriptEle)
-        window[callbackName] = data => {
-            window[callbackName] = originalCallback; 
-            document.body.removeChild(scriptEle)
-            resolve(data)
-        }
-    })
+const jsonp = ({url, params, callbackName}) => {
+    // ´´½¨ÍêÕû url
+    const generateUrl = () => {
+        let dataSrc = ''
+        for (const key in params) {
+            if (params.hasOwnProperty(key)) {
+                dataSrc += `${key}=${params[key]}&`
+            }
+        }
+
+        dataSrc += `callback=${callbackName}`
+        return `${url}?${dataSrc}`
+    }
+
+    // ·¢ËÍ
+    return new Promise((resolve, reject) => {
+        const originalCallback = window[callbackName];
+        const scriptEle = document.createElement('script')
+        scriptEle.src = generateUrl()
+        document.body.appendChild(scriptEle)
+        window[callbackName] = data => {
+            window[callbackName] = originalCallback; 
+            document.body.removeChild(scriptEle)
+            resolve(data)
+        }
+    })
 }

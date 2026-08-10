@@ -1,74 +1,74 @@
-/**
- * å®ç°æ€è·¯
- * åˆ¤æ–­è°ƒç”¨å¯¹è±¡æ˜¯å¦ä¸ºå‡½æ•°
- * åˆ¤æ–­ä¼ å…¥ä¸Šä¸‹æ–‡å¯¹è±¡æ˜¯å¦å­˜åœ¨ï¼Œå¦‚æœä¸å­˜åœ¨ï¼Œåˆ™è®¾ç½®ä¸ºwindow
- * å¤„ç†ä¼ å…¥çš„å‚æ•°ï¼Œæˆªå–ç¬¬ä¸€ä¸ªå‚æ•°åçš„æ‰€æœ‰å‚æ•°
- * å°†å‡½æ•°ä½œä¸ºä¸Šä¸‹æ–‡å¯¹è±¡çš„ä¸€ä¸ªå±æ€§
- * ä½¿ç”¨ä¸Šä¸‹æ–‡å¯¹è±¡æ¥è°ƒç”¨è¿™ä¸ªæ–¹æ³•ï¼Œå¹¶ä¿å­˜è¿”å›ç»“æœ
- * åˆ é™¤åˆšæ‰æ–°å¢çš„å±æ€§
- * è¿”å›ç»“æœ
- * 
- * */ 
-
-
-// call
-Function.prototype.call = function(context) {
-    if (typeof this !== 'function') {
-        return new TypeError('TypeError: Cannot read the property of')
-    }
-
-    let args = [...arguments].slice(1), result = null
-    context = context || window
-    context.fn = this
-    result = context.fn(...args)
-
-    delete context.fn
-    return result
-}
-
-// apply
-Function.prototype.apply = function(context) {
-    if (typeof this !== 'function') {
-        return new TypeError('TypeError: Cannot read the property of')
-    }
-
-    let result = null
-    context = context || window
-    context.fn = this
-
-    if (arguments[1]) {
-        result = context.fn(...arguments[1])
-    } else {
-        result = context.fn()
-    }
-    
-    delete context.fn
-    return result
-
-}
-
-// bind
-// åˆ†ä¸ºæ„é€ å‡½æ•°å’Œæ™®é€šå‡½æ•°
-// ç»‘å®šå‡½æ•°æ²¡æœ‰ prototype å±æ€§
-// ä¸€ä¸ªç»‘å®šå‡½æ•°ä¹Ÿèƒ½ä½¿ç”¨newæ“ä½œç¬¦åˆ›å»ºå¯¹è±¡é€ å™¨ã€‚æä¾›çš„ï¼šè¿™ç§è¡Œä¸ºå°±åƒæŠŠåŸå‡½æ•°å½“æˆæ„ this å€¼è¢«å¿½ç•¥
-Function.prototype.bind = function (context) {
-    if (typeof this !== 'function') {
-        return new TypeError('TypeError: Cannot read the property of')
-    }
-    let _this = this
-    // è·å–å‚æ•°
-    let args = Array.prototype.slice.call(arguments, 1);
-
-    if (this.prototype) {
-        // è®©fBindçš„åŸå‹æŒ‡å‘ç»‘å®šå‡½æ•°çš„åŸå‹
-        fNOP.prototype = this.prototype
-    }
-    fBInd.prototype = new fNOP()
-
-    function fNOP() {}
-    function fBInd () {
-        let bindArgs = args.concat(Array.prototype.slice.call(arguments))
-        return _this.apply(this instanceof fBInd ? this : context, bindArgs)
-    }
-    return fBInd
+/**
+ * ÊµÏÖË¼Â·
+ * ÅĞ¶Ïµ÷ÓÃ¶ÔÏóÊÇ·ñÎªº¯Êı
+ * ÅĞ¶Ï´«ÈëÉÏÏÂÎÄ¶ÔÏóÊÇ·ñ´æÔÚ£¬Èç¹û²»´æÔÚ£¬ÔòÉèÖÃÎªwindow
+ * ´¦Àí´«ÈëµÄ²ÎÊı£¬½ØÈ¡µÚÒ»¸ö²ÎÊıºóµÄËùÓĞ²ÎÊı
+ * ½«º¯Êı×÷ÎªÉÏÏÂÎÄ¶ÔÏóµÄÒ»¸öÊôĞÔ
+ * Ê¹ÓÃÉÏÏÂÎÄ¶ÔÏóÀ´µ÷ÓÃÕâ¸ö·½·¨£¬²¢±£´æ·µ»Ø½á¹û
+ * É¾³ı¸Õ²ÅĞÂÔöµÄÊôĞÔ
+ * ·µ»Ø½á¹û
+ * 
+ * */ 
+
+
+// call
+Function.prototype.call = function(context) {
+    if (typeof this !== 'function') {
+        return new TypeError('TypeError: Cannot read the property of')
+    }
+
+    let args = [...arguments].slice(1), result = null
+    context = context || window
+    context.fn = this
+    result = context.fn(...args)
+
+    delete context.fn
+    return result
+}
+
+// apply
+Function.prototype.apply = function(context) {
+    if (typeof this !== 'function') {
+        return new TypeError('TypeError: Cannot read the property of')
+    }
+
+    let result = null
+    context = context || window
+    context.fn = this
+
+    if (arguments[1]) {
+        result = context.fn(...arguments[1])
+    } else {
+        result = context.fn()
+    }
+    
+    delete context.fn
+    return result
+
+}
+
+// bind
+// ·ÖÎª¹¹Ôìº¯ÊıºÍÆÕÍ¨º¯Êı
+// °ó¶¨º¯ÊıÃ»ÓĞ prototype ÊôĞÔ
+// Ò»¸ö°ó¶¨º¯ÊıÒ²ÄÜÊ¹ÓÃnew²Ù×÷·û´´½¨¶ÔÏóÔìÆ÷¡£Ìá¹©µÄ£ºÕâÖÖĞĞÎª¾ÍÏñ°ÑÔ­º¯Êıµ±³É¹¹ this Öµ±»ºöÂÔ
+Function.prototype.bind = function (context) {
+    if (typeof this !== 'function') {
+        return new TypeError('TypeError: Cannot read the property of')
+    }
+    let _this = this
+    // »ñÈ¡²ÎÊı
+    let args = Array.prototype.slice.call(arguments, 1);
+
+    if (this.prototype) {
+        // ÈÃfBindµÄÔ­ĞÍÖ¸Ïò°ó¶¨º¯ÊıµÄÔ­ĞÍ
+        fNOP.prototype = this.prototype
+    }
+    fBInd.prototype = new fNOP()
+
+    function fNOP() {}
+    function fBInd () {
+        let bindArgs = args.concat(Array.prototype.slice.call(arguments))
+        return _this.apply(this instanceof fBInd ? this : context, bindArgs)
+    }
+    return fBInd
 }

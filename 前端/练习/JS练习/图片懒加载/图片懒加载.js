@@ -1,43 +1,43 @@
-/**
- * offestï¼šåç§»é‡ï¼Œåªè¯»ï¼Œä¸èƒ½ä¿®æ”¹ï¼Œæ²¡æœ‰å•ä½
- * offestParentï¼šæœ‰å®šä½çš„çˆ¶çº§å…ƒç´ 
- * offestTopï¼šå…ƒç´ ç›¸å¯¹å®šä½çˆ¶çº§å…ƒç´ çš„ä¸Šæ–¹åç§»
- * offestLeftï¼šå…ƒç´ ç›¸å¯¹å®šä½çˆ¶çº§å…ƒç´ çš„å·¦è¾¹åç§»
- * offestHeightï¼šè¿”å›è‡ªèº«å¸¦æœ‰ paddingï¼Œè¾¹æ¡†ï¼Œå†…å®¹çš„é«˜åº¦
- * offestWidthï¼šè¿”å›è‡ªèº«å¸¦æœ‰ paddingï¼Œè¾¹æ¡†ï¼Œå†…å®¹çš„å®½åº¦
- */ 
-
-/**
- * clientï¼šå…ƒç´ å¯è§†åŒºçš„ä¿¡æ¯
- * clientTopï¼šå…ƒç´ ä¸Šè¾¹æ¡†çš„å¤§å°
- * clientLeftï¼šå…ƒç´ å·¦è¾¹æ¡†çš„å¤§å°
- * clientHeightï¼šè¿”å›è‡ªèº«å¸¦æœ‰ paddingï¼Œå†…å®¹çš„é«˜åº¦ï¼Œæ— è¾¹æ¡†
- * clientWidthï¼šè¿”å›è‡ªèº«å¸¦æœ‰ paddingï¼Œå†…å®¹çš„å®½åº¦ï¼Œæ— è¾¹æ¡†
- */ 
-
-/**
- * scrollï¼šåŠ¨æ€å¾—åˆ°å…ƒç´ çš„å¤§å°ã€æ»šåŠ¨è·ç¦»
- * scrollTopï¼šè¢«å·ä¸Šå»çš„ä¸Šä¾§è·ç¦»
- * scrollLeftï¼šè¢«å·å»çš„å·¦ä¾§è·ç¦»
- * scrollHeightï¼šè¿”å›è‡ªèº«çš„å®é™…å®½åº¦ï¼Œä¸åŒ…å«è¾¹æ¡†
- * scrollWidthï¼šè¿”å›è‡ªèº«çš„å®é™…é«˜åº¦ï¼Œä¸åŒ…å«è¾¹æ¡†
- */ 
-
-// https://blog.csdn.net/qq_63358859/article/details/142452339
-
-
-const images = [...document.querySelectorAll('img')] 
-// 2 ç›‘å¬é¡µé¢æ»šåŠ¨äº‹ä»¶
-window.addEventListener('scroll', lazyload)
-// 3 å®šä¹‰é¡µé¢æ»šåŠ¨çš„å¤„ç†å‡½æ•°
-function lazyload(e){
-// 3.1 è·å–å±å¹•çš„å¯è§†é«˜åº¦
-const clientHeight = document.documentElement.clientHeight
-// 3.2 è·å–å±å¹•çš„æ»šåŠ¨è·ç¦»
-const scrollTop = document.documentElement.scrollTop
-    for (let i = 0; i < images.length; i++) {
-        if (images[i].offsetTop < clientHeight + scrollTop) {
-        images[i].setAttribute('src', images[i].getAttribute('data-src'))
-        }
-    }
+/**
+ * offest£ºÆ«ÒÆÁ¿£¬Ö»¶Á£¬²»ÄÜĞŞ¸Ä£¬Ã»ÓĞµ¥Î»
+ * offestParent£ºÓĞ¶¨Î»µÄ¸¸¼¶ÔªËØ
+ * offestTop£ºÔªËØÏà¶Ô¶¨Î»¸¸¼¶ÔªËØµÄÉÏ·½Æ«ÒÆ
+ * offestLeft£ºÔªËØÏà¶Ô¶¨Î»¸¸¼¶ÔªËØµÄ×ó±ßÆ«ÒÆ
+ * offestHeight£º·µ»Ø×ÔÉí´øÓĞ padding£¬±ß¿ò£¬ÄÚÈİµÄ¸ß¶È
+ * offestWidth£º·µ»Ø×ÔÉí´øÓĞ padding£¬±ß¿ò£¬ÄÚÈİµÄ¿í¶È
+ */ 
+
+/**
+ * client£ºÔªËØ¿ÉÊÓÇøµÄĞÅÏ¢
+ * clientTop£ºÔªËØÉÏ±ß¿òµÄ´óĞ¡
+ * clientLeft£ºÔªËØ×ó±ß¿òµÄ´óĞ¡
+ * clientHeight£º·µ»Ø×ÔÉí´øÓĞ padding£¬ÄÚÈİµÄ¸ß¶È£¬ÎŞ±ß¿ò
+ * clientWidth£º·µ»Ø×ÔÉí´øÓĞ padding£¬ÄÚÈİµÄ¿í¶È£¬ÎŞ±ß¿ò
+ */ 
+
+/**
+ * scroll£º¶¯Ì¬µÃµ½ÔªËØµÄ´óĞ¡¡¢¹ö¶¯¾àÀë
+ * scrollTop£º±»¾íÉÏÈ¥µÄÉÏ²à¾àÀë
+ * scrollLeft£º±»¾íÈ¥µÄ×ó²à¾àÀë
+ * scrollHeight£º·µ»Ø×ÔÉíµÄÊµ¼Ê¿í¶È£¬²»°üº¬±ß¿ò
+ * scrollWidth£º·µ»Ø×ÔÉíµÄÊµ¼Ê¸ß¶È£¬²»°üº¬±ß¿ò
+ */ 
+
+// https://blog.csdn.net/qq_63358859/article/details/142452339
+
+
+const images = [...document.querySelectorAll('img')] 
+// 2 ¼àÌıÒ³Ãæ¹ö¶¯ÊÂ¼ş
+window.addEventListener('scroll', lazyload)
+// 3 ¶¨ÒåÒ³Ãæ¹ö¶¯µÄ´¦Àíº¯Êı
+function lazyload(e){
+// 3.1 »ñÈ¡ÆÁÄ»µÄ¿ÉÊÓ¸ß¶È
+const clientHeight = document.documentElement.clientHeight
+// 3.2 »ñÈ¡ÆÁÄ»µÄ¹ö¶¯¾àÀë
+const scrollTop = document.documentElement.scrollTop
+    for (let i = 0; i < images.length; i++) {
+        if (images[i].offsetTop < clientHeight + scrollTop) {
+        images[i].setAttribute('src', images[i].getAttribute('data-src'))
+        }
+    }
 }
